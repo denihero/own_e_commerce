@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/style.dart';
-import 'package:http_practice/presentation/screens/home_screen/detail_cart_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/bottom_sheet_detail_cart_widget.dart';
+
+import '../../detail_screen/detail_cart_screen.dart';
 
 class CartWidget extends StatelessWidget {
   final int id;
@@ -23,13 +24,18 @@ class CartWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const DetailCartScreen()),
+          MaterialPageRoute(builder: (context) => DetailCartScreen(
+            imageUrl: image, price: price, description: description, title: title,
+          )),
         );
       },
       onLongPress:() => showBottomSheetCart(context),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
         child: Column(
           children: [
             Padding(
