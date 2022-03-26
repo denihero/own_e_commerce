@@ -5,6 +5,7 @@ import 'package:http_practice/presentation/screens/home_screen/widget/shopping_c
 import 'package:http_practice/core/constant/string.dart';
 
 import 'model/product.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -13,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   late final Future<List<Product>>? futureProduct;
 
   @override
@@ -26,40 +26,40 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Theme
-              .of(context)
-              .backgroundColor,
+          backgroundColor: Colors.white,
           appBar: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            leading: const Icon(
+              Icons.menu,
+              color: Colors.black,
+            ),
             actions: const [
               Padding(
                   padding: EdgeInsets.only(right: 10, top: 5),
                   child: ShoppingCartWidget())
             ],
-            backgroundColor: Theme
-                .of(context)
-                .appBarTheme
-                .backgroundColor,
-            title: const Text(Strings.homeScreenAppBarTitle),
+            title: const Text(
+              Strings.homeScreenAppBarTitle,
+              style: TextStyle(color: Colors.black),
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Center(
                 child: FutureBuilder<List<Product>>(
-                    future:futureProduct,
-                    builder: (context,snapshot){
-                      if(snapshot.hasData){
+                    future: futureProduct,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
                         return GridCart(
                           asyncSnapshot: snapshot,
                         );
-                      }else if(snapshot.hasError){
+                      } else if (snapshot.hasError) {
                         return Text('${snapshot.error}');
                       }
                       return const CircularProgressIndicator();
-                    }
-                )
-            ),
+                    })),
           )),
     );
   }
 }
-

@@ -12,10 +12,11 @@ class CartWidget extends StatelessWidget {
   final String description;
   const CartWidget(
       {Key? key,
-        required this.image,
-        required this.title,
-        required this.price,
-        required this.description, required this.id})
+      required this.image,
+      required this.title,
+      required this.price,
+      required this.description,
+      required this.id})
       : super(key: key);
 
   @override
@@ -24,15 +25,19 @@ class CartWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailCartScreen(
-            imageUrl: image, price: price, description: description, title: title,
-          )),
+          MaterialPageRoute(
+              builder: (context) => DetailCartScreen(
+                    imageUrl: image,
+                    price: price,
+                    description: description,
+                    title: title,
+                  )),
         );
       },
-      onLongPress:() => showBottomSheetCart(context),
+      onLongPress: () => showBottomSheetCart(context),
       child: Card(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 1,
+        elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
@@ -46,28 +51,27 @@ class CartWidget extends StatelessWidget {
                   child: Image.network(
                     image,
                     fit: BoxFit.contain,
-                  )
-              ),
+                  )),
             ),
+            const Spacer(),
             Padding(
-              padding: const EdgeInsets.only(left: 9),
+              padding: const EdgeInsets.only(left: 9, bottom: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     '$price\$',
-                    style:priceStyle,
+                    style: priceStyle,
                   ),
                   Text(
                     title,
                     style: titleStyle,
-                    overflow:TextOverflow.ellipsis,
+                    overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                   ),
                 ],
               ),
             ),
-
           ],
         ),
       ),

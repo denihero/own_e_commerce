@@ -12,11 +12,11 @@ class Product {
 
   Product(
       {required this.id,
-        required this.title,
-        required this.price,
-        required this.category,
-        required this.description,
-        required this.image});
+      required this.title,
+      required this.price,
+      required this.category,
+      required this.description,
+      required this.image});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -41,9 +41,9 @@ class Product {
 
 }
 
-Future<List<Product>>  fetchAlbum() async {
+Future<List<Product>> fetchAlbum() async {
   final response =
-  await http.get(Uri.parse('https://fakestoreapi.com/products'));
+      await http.get(Uri.parse('https://fakestoreapi.com/products'));
   List<Product> prodList = [];
   var jsonList = jsonDecode(response.body);
 
@@ -51,7 +51,7 @@ Future<List<Product>>  fetchAlbum() async {
     // If the server did return a 200 OK response,
     // then parse the JSON.
 
-    for(var prod in jsonList){
+    for (var prod in jsonList) {
       prodList.add(Product.fromJson(prod));
     }
     return prodList;

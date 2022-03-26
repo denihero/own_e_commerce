@@ -6,15 +6,10 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(15),
-      child: Text(
-        title,
-        style: const TextStyle(
-            fontSize: 22,
-            overflow: TextOverflow.ellipsis
-        ),
-      ),
+    return Text(
+      title,
+      style: const TextStyle(
+          fontSize: 22, overflow: TextOverflow.ellipsis, color: Colors.grey),
     );
   }
 }
