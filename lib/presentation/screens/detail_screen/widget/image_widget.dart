@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ImageWidget extends StatelessWidget {
-  const ImageWidget({Key? key,required this.imageUrl}) : super(key: key);
+  const ImageWidget({Key? key, required this.imageUrl}) : super(key: key);
 
   final String imageUrl;
 
@@ -17,7 +17,11 @@ class ImageWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.0),
           ),
           child: Center(
-            child: Image.network(imageUrl,width: 300,height: 300,),
+            child: Image.network(
+              imageUrl,
+              width: 300,
+              height: 300,
+            ),
           ),
         ),
       ),
