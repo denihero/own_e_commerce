@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http_practice/presentation/behavioe.dart';
+import 'package:http_practice/behavior.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/home_screen.dart';
 
