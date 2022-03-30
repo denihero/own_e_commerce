@@ -20,7 +20,7 @@ class ShoppingCartWidget extends StatelessWidget {
           right: 1,
           child: CircleAvatar(
             maxRadius: 10,
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.redAccent,
             child:
                 Text('0', style: TextStyle(fontSize: 15, color: Colors.white)),
           ),
