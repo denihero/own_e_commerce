@@ -14,7 +14,9 @@ class AddCartButton extends StatelessWidget {
             overlayColor: MaterialStateProperty.all(Colors.blue),
             side: MaterialStateProperty.all(
                 const BorderSide(width: 2, color: Colors.black))),
-        onPressed: () {},
+        onPressed: () {
+
+        },
         child: const Text(
           'Добавить в корзину',
           style: TextStyle(fontSize: 23, color: Colors.black),

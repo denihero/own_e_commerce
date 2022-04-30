@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/colors.dart';
-import 'package:http_practice/core/constant/style.dart';
 
 import 'package:http_practice/core/constant/string.dart';
-import 'package:http_practice/presentation/screens/cart_screen/widget/no_product_widget.dart';
+import 'package:http_practice/presentation/screens/cart_screen/widget/add_cart_widget.dart';
 
 
 class CartScreen extends StatelessWidget {
@@ -25,11 +24,21 @@ class CartScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            NoProductWidget(),
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+             SizedBox(
+               height: MediaQuery.of(context).size.height * 2,
+               child: ListView.builder(
+                   physics: const NeverScrollableScrollPhysics(),
+                   scrollDirection: Axis.vertical,
+                   itemCount: 20,
+                   itemBuilder: (context, index) {
+                    return const AddCartWidget(title: 'Nike', price: 12, imageUrl: '',);
+                   }),
+             )
+            ],
+          ),
         ));
   }
 }
