@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/cart_grid_widget.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/shopping_cart_icon_widget.dart';
 
 import 'package:http_practice/core/constant/string.dart';
 
-import 'model/product.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,14 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final Future<List<Product>>? futureProduct;
-
-  @override
-  void initState() {
-    super.initState();
-    futureProduct = fetchAlbum();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,18 +40,24 @@ class _HomeScreenState extends State<HomeScreen> {
           body: Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Center(
-                child: FutureBuilder<List<Product>>(
-                    future: futureProduct,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return GridCart(
-                          asyncSnapshot: snapshot,
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text('${snapshot.error}');
-                      }
-                      return const CircularProgressIndicator();
-                    })),
+                child: BlocBuilder<ClothesCubit,ClothesState>(
+                  builder: (context,state){
+                    if(state is ClothesLoading){
+                      return const CircularProgressIndicator(
+                        color: Colors.black,
+                      );
+                    }else if(state is ClothesError){
+                      return const Text('Something get wrong');
+                    }else if(state is ClothesLoaded){
+                      final product = state.product;
+                      return GridCart(
+                        product: product,
+                      );
+                    }
+                    return Container();
+                  },
+                )
+            ),
           )),
     );
   }

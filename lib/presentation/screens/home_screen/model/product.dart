@@ -1,63 +1,90 @@
+// To parse this JSON data, do
+//
+//     final welcome = welcomeFromJson(jsonString);
+
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+List<Product> welcomeFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
+
+String welcomeToJson(List<Product> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Product {
-  late final int id;
-  late final String title;
-  late final double price;
-  late final String category;
-  late final String description;
-  late final String? image;
+  Product({
+    this.id,
+    this.title,
+    this.price,
+    this.description,
+    this.category,
+    this.image,
+    this.rating,
+  });
 
-  Product(
-      {required this.id,
-      required this.title,
-      required this.price,
-      required this.category,
-      required this.description,
-      required this.image});
+  final int? id;
+  final String? title;
+  final double? price;
+  final String? description;
+  final Category? category;
+  final String? image;
+  final Rating? rating;
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    price = json['price'] == null ? 0.0 : json['price'].toDouble();
-    description = json['description'];
-    category = json['category'];
-    image = json['image'];
-  }
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+    id: json["id"],
+    title: json["title"],
+    price: json["price"].toDouble(),
+    description: json["description"],
+    category: categoryValues.map![json["category"]],
+    image: json["image"],
+    rating: Rating.fromJson(json["rating"]),
+  );
 
-/*Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['id'] = id;
-    data['title'] = title;
-    data['price'] = price;
-    data['description'] = description;
-    data['category'] = category;
-    data['image'] = image;
-    return data;
-  }
-*/
-
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "title": title,
+    "price": price,
+    "description": description,
+    "category": categoryValues.reverse![category],
+    "image": image,
+    "rating": rating?.toJson(),
+  };
 }
 
-Future<List<Product>> fetchAlbum() async {
-  final response =
-      await http.get(Uri.parse('https://fakestoreapi.com/products'));
-  List<Product> prodList = [];
-  var jsonList = jsonDecode(response.body);
+enum Category { MEN_S_CLOTHING, JEWELERY, ELECTRONICS, WOMEN_S_CLOTHING }
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
+final categoryValues = EnumValues({
+  "electronics": Category.ELECTRONICS,
+  "jewelery": Category.JEWELERY,
+  "men's clothing": Category.MEN_S_CLOTHING,
+  "women's clothing": Category.WOMEN_S_CLOTHING
+});
 
-    for (var prod in jsonList) {
-      prodList.add(Product.fromJson(prod));
-    }
-    return prodList;
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
+class Rating {
+  Rating({
+    this.rate,
+    this.count,
+  });
+
+  final double? rate;
+  final int? count;
+
+  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
+    rate: json["rate"].toDouble(),
+    count: json["count"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "rate": rate,
+    "count": count,
+  };
+}
+
+class EnumValues<T> {
+  Map<String, T>? map;
+  Map<T, String>? reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String>? get reverse {
+    reverseMap ??= map?.map((k, v) => new MapEntry(v, k));
+    return reverseMap;
   }
 }

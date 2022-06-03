@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
 import 'cart_widget.dart';
 
 class GridCart extends StatefulWidget {
-  const GridCart({Key? key, required this.asyncSnapshot}) : super(key: key);
-  final AsyncSnapshot asyncSnapshot;
+  const GridCart({Key? key, required this.product}) : super(key: key);
+  final List<Product> product;
 
   @override
   State<GridCart> createState() => _GridCartState();
@@ -23,14 +24,14 @@ class _GridCartState extends State<GridCart> {
             crossAxisCount: 2,
             mainAxisSpacing: 4,
             crossAxisSpacing: 4),
-        itemCount: widget.asyncSnapshot.data!.length,
+        itemCount: widget.product.length,
         itemBuilder: (context, index) {
           return CartWidget(
-            image: widget.asyncSnapshot.data![index].image!,
-            title: widget.asyncSnapshot.data![index].title,
-            price: widget.asyncSnapshot.data![index].price,
-            description: widget.asyncSnapshot.data![index].description,
-            id: widget.asyncSnapshot.data![index].id,
+            image: widget.product[index].image!,
+            title: widget.product[index].title!,
+            price: widget.product[index].price!,
+            description:widget.product[index].description!,
+            id: widget.product[index].id!,
           );
         });
   }
