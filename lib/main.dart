@@ -5,6 +5,7 @@ import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/home_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/api_request/api_request.dart';
+import 'package:http_practice/presentation/screens/login/login_screen.dart';
 
 void main() {
   runApp(const App());
@@ -29,10 +30,11 @@ class ShopApp extends StatelessWidget {
       child: MaterialApp(
         scrollBehavior: MyBehavior(),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+        initialRoute: '/login',
         routes: {
           '/': (context) => const HomeScreen(),
-          'cart_screen': (context) => const CartScreen(),
+          '/login':(context) => const LoginScreen(),
+          '/cart_screen': (context) => const CartScreen(),
         },
       ),
     );

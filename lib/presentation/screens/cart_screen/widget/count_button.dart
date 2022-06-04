@@ -9,10 +9,6 @@ class CountButton extends StatelessWidget {
     return Container(
       height: 30,
       width: 110,
-      /*decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.all(Radius.circular(12))
-      ),*/
       child: Row(
         children: [
           IconButton(

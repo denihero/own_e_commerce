@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
+import 'package:http_practice/presentation/screens/cart_screen/cart_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/cart_grid_widget.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/shopping_cart_icon_widget.dart';
 
@@ -19,14 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            iconTheme: const IconThemeData(color: Colors.black),
+            backgroundColor: Colors.transparent,
             elevation: 0,
-            leading: const Icon(
-              Icons.menu,
-              color: Colors.black,
-            ),
             actions: const [
               Padding(
                   padding: EdgeInsets.only(right: 10, top: 5),
@@ -35,6 +32,34 @@ class _HomeScreenState extends State<HomeScreen> {
             title: const Text(
               Strings.homeScreenAppBarTitle,
               style: TextStyle(color: Colors.black),
+            ),
+          ),
+          drawer: Drawer(
+            backgroundColor: Colors.white,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                const DrawerHeader(
+                  margin: EdgeInsets.only(bottom: 0,top: 0),
+                    padding: EdgeInsets.only(top: 130,left: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                    child: Text('User name',style: TextStyle(fontSize: 20),)
+                ),
+                ListTile(
+                  title: const Text('Home'),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  },
+                ),
+                ListTile(
+                  title: const Text('Cart'),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen()));
+                  },
+                ),
+              ],
             ),
           ),
           body: Padding(

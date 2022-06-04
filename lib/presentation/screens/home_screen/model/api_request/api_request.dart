@@ -10,7 +10,6 @@ class ApiRequest{
     final response = await http.get(Uri.parse('https://fakestoreapi.com/products'));
 
     List<Product> product = [];
-    print(response);
     if(response.statusCode == 200){
       for(var item in jsonDecode(response.body)){
          product.add(Product.fromJson(item));

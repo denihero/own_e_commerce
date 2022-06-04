@@ -32,7 +32,7 @@ class CartScreen extends StatelessWidget {
                child: ListView.builder(
                    physics: const NeverScrollableScrollPhysics(),
                    scrollDirection: Axis.vertical,
-                   itemCount: 20,
+                   itemCount: 1,
                    itemBuilder: (context, index) {
                     return const AddCartWidget(title: 'Nike', price: 12, imageUrl: '',);
                    }),
