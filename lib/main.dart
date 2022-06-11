@@ -6,6 +6,7 @@ import 'package:http_practice/presentation/screens/cart_screen/cart_screen.dart'
 import 'package:http_practice/presentation/screens/home_screen/home_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/api_request/api_request.dart';
 import 'package:http_practice/presentation/screens/login/login_screen.dart';
+import 'package:http_practice/presentation/screens/register/register_screen.dart';
 
 void main() {
   runApp(const App());
@@ -35,6 +36,7 @@ class ShopApp extends StatelessWidget {
           '/': (context) => const HomeScreen(),
           '/login':(context) => const LoginScreen(),
           '/cart_screen': (context) => const CartScreen(),
+          '/register_screen':(context) => const RegisterScreen()
         },
       ),
     );
