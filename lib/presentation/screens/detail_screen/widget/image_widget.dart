@@ -11,6 +11,7 @@ class ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
+
         width: 300,
         height: 350,
         child: Card(
