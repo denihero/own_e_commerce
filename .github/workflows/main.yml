@@ -36,12 +36,11 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: artifacts/app-release.apk
-          
+          path: build/app/outputs/bundle/release/app-release.apk
       - name: Build APPBUNDLE
         run: flutter build appbundle --release
       - name: Save APPBUNDLE to Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: APPBUNDLE
-          path: artifacts/app-release.aab
+          path: build/app/outputs/bundle/release/app-release.aab
