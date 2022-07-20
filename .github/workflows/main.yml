@@ -32,10 +32,7 @@ jobs:
           
       - name: Get deps
         run: flutter pub get
-      - name: Clean all package
-        run: flutter clean
-      - name: flutter build
-        run: flutter build apk --split-per-abi
+      - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
