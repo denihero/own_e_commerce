@@ -30,16 +30,12 @@ jobs:
         with:
           channel: 'beta'
       - run: flutter --version
-          
       - name: Get deps
       - run: flutter pub get
-        
       - name: Build APK
       - run: flutter build apk --release
-      
       - name: Build APPBUNDLE
       - run: flutter build appbundle
-      
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
