@@ -36,7 +36,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/app/outputs/apk/release/app-release.apk
+          path: artifacts/app-release.apk
           
       - name: Build APPBUNDLE
         run: flutter build appbundle --release
@@ -44,4 +44,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: APPBUNDLE
-          path: build/app/outputs/bundle/release/app-release.aab
+          path: artifacts/app-release.aab
