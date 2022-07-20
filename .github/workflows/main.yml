@@ -32,10 +32,10 @@ jobs:
         run: flutter pub get
       - name: Flutter version
         run : flutter --version
-      - run: flutter build apk 
+      - run: flutter build apk --release
       - uses: actions/upload-artifact@v1
         with:
-          name: release-apk
+          name: release-apk 
           path: build/app/outputs/bundle/release/app-release.apk
       - name: Build APPBUNDLE
         run: flutter build appbundle --release
