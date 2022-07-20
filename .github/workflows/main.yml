@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: build-project-time
 
 # Controls when the workflow will run
@@ -29,12 +27,10 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'beta'
-      - name: Get Flutter version
-      - run: flutter --version
+          
       - name: Get deps
-      - run: flutter pub get
-      - name: Build APK
-      - run: flutter build apk --release
+        run: flutter pub get
+      - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
