@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/style.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/bottom_sheet_detail_cart_widget.dart';
 
 import '../../detail_screen/detail_cart_screen.dart';
+import 'bounce_loading.dart';
 
 class CartWidget extends StatelessWidget {
   final int id;
@@ -48,8 +50,9 @@ class CartWidget extends StatelessWidget {
               child: SizedBox(
                   width: 150,
                   height: 200,
-                  child: Image.network(
-                    image,
+                  child: CachedNetworkImage(imageUrl: image,
+                    placeholder: (context, url) =>
+                    const SpinKitDoubleBounce(color: Colors.blue),
                     fit: BoxFit.contain,
                   )),
             ),
