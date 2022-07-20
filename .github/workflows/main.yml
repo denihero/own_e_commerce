@@ -29,10 +29,17 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'beta'
+      - run: flutter --version
           
       - name: Get deps
         run: flutter pub get
-      - run: flutter build apk --split-per-abi
+        
+      - name: Build APK
+      - run: flutter build apk --split-per-abi --release
+      
+      - name: Build APPBUNDLE
+      - run: flutter build appbundle
+      
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
