@@ -10,8 +10,9 @@ class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
 
+
+      child: SizedBox(
         width: 300,
         height: 350,
         child: Card(
