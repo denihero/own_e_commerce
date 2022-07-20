@@ -7,7 +7,7 @@ Future showBottomSheetCart(BuildContext context) {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(12))),
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           height: 600,
           width: double.infinity,
           child: Padding(

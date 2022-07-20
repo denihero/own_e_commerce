@@ -7,7 +7,6 @@ import 'package:http_practice/presentation/screens/home_screen/widget/shopping_c
 
 import 'package:http_practice/core/constant/string.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -40,23 +39,31 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: EdgeInsets.zero,
               children: [
                 const DrawerHeader(
-                  margin: EdgeInsets.only(bottom: 0,top: 0),
-                    padding: EdgeInsets.only(top: 130,left: 15),
+                    margin: EdgeInsets.only(bottom: 0, top: 0),
+                    padding: EdgeInsets.only(top: 130, left: 15),
                     decoration: BoxDecoration(
                       color: Colors.blue,
                     ),
-                    child: Text('User name',style: TextStyle(fontSize: 20),)
-                ),
+                    child: Text(
+                      'User name',
+                      style: TextStyle(fontSize: 20),
+                    )),
                 ListTile(
                   title: const Text('Home'),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
                   },
                 ),
                 ListTile(
                   title: const Text('Cart'),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CartScreen()));
                   },
                 ),
               ],
@@ -64,25 +71,23 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: Center(
-                child: BlocBuilder<ClothesCubit,ClothesState>(
-                  builder: (context,state){
-                    if(state is ClothesLoading){
-                      return const CircularProgressIndicator(
-                        color: Colors.black,
-                      );
-                    }else if(state is ClothesError){
-                      return const Text('Something get wrong');
-                    }else if(state is ClothesLoaded){
-                      final product = state.product;
-                      return GridCart(
-                        product: product,
-                      );
-                    }
-                    return Container();
-                  },
-                )
-            ),
+            child: Center(child: BlocBuilder<ClothesCubit, ClothesState>(
+              builder: (context, state) {
+                if (state is ClothesLoading) {
+                  return const CircularProgressIndicator(
+                    color: Colors.black,
+                  );
+                } else if (state is ClothesError) {
+                  return const Text('Something get wrong');
+                } else if (state is ClothesLoaded) {
+                  final product = state.product;
+                  return GridCart(
+                    product: product,
+                  );
+                }
+                return Container();
+              },
+            )),
           )),
     );
   }

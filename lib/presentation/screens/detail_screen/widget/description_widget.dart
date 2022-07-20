@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
@@ -9,13 +8,11 @@ class DescriptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        description,
-        overflow: TextOverflow.ellipsis,
-        maxLines: 3,
-        style: const TextStyle(fontSize: 16),
-      ),
+    return Text(
+      description,
+      overflow: TextOverflow.ellipsis,
+      maxLines: 3,
+      style: const TextStyle(fontSize: 16),
     );
   }
 }

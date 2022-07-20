@@ -1,8 +1,7 @@
 part of 'clothes_cubit.dart';
 
-
 @immutable
-abstract class ClothesState extends Equatable{}
+abstract class ClothesState extends Equatable {}
 
 class ClothesInitial extends ClothesState {
   @override

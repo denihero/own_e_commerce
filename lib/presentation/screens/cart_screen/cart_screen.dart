@@ -4,7 +4,6 @@ import 'package:http_practice/core/constant/colors.dart';
 import 'package:http_practice/core/constant/string.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/add_cart_widget.dart';
 
-
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -27,16 +26,20 @@ class CartScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-             SizedBox(
-               height: MediaQuery.of(context).size.height * 2,
-               child: ListView.builder(
-                   physics: const NeverScrollableScrollPhysics(),
-                   scrollDirection: Axis.vertical,
-                   itemCount: 1,
-                   itemBuilder: (context, index) {
-                    return const AddCartWidget(title: 'Nike', price: 12, imageUrl: '',);
-                   }),
-             )
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 2,
+                child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: 1,
+                    itemBuilder: (context, index) {
+                      return const AddCartWidget(
+                        title: 'Nike',
+                        price: 12,
+                        imageUrl: '',
+                      );
+                    }),
+              )
             ],
           ),
         ));

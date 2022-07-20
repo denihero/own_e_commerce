@@ -50,9 +50,10 @@ class CartWidget extends StatelessWidget {
               child: SizedBox(
                   width: 150,
                   height: 200,
-                  child: CachedNetworkImage(imageUrl: image,
+                  child: CachedNetworkImage(
+                    imageUrl: image,
                     placeholder: (context, url) =>
-                    const SpinKitDoubleBounce(color: Colors.blue),
+                        const SpinKitDoubleBounce(color: Colors.blue),
                     fit: BoxFit.contain,
                   )),
             ),

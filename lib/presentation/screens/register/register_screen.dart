@@ -13,12 +13,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController passwordConfirmController = TextEditingController();
-
+  final TextEditingController passwordConfirmController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const BackButton(color: Colors.black,),
+        leading: const BackButton(
+          color: Colors.black,
+        ),
       ),
       body: Column(
         children: [
@@ -39,12 +40,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Padding(
               padding: const EdgeInsets.only(left: 30),
               child: RichText(
-                  text: const TextSpan(
-                      children:  <TextSpan>[
-                        TextSpan(text: 'Create Account',style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.w900)),
-                      ]
-                  )
-              ),
+                  text: const TextSpan(children: <TextSpan>[
+                TextSpan(
+                    text: 'Create Account',
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w900)),
+              ])),
             ),
           ),
           const SizedBox(
@@ -52,27 +55,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: NameTextFormField(
-                controller: nameController
-            ),
+            child: NameTextFormField(controller: nameController),
           ),
           const SizedBox(
             height: 5,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: EmailTextFormField(
-                controller: emailController
-            ),
+            child: EmailTextFormField(controller: emailController),
           ),
           const SizedBox(
             height: 5,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: PasswordTextFormField(
-                controller: passwordController
-            ),
+            child: PasswordTextFormField(controller: passwordController),
           ),
           const SizedBox(
             height: 5,
@@ -80,37 +77,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PasswordTextFormField(
-                controller: passwordConfirmController,
-                label: 'Password Confirm',
+              controller: passwordConfirmController,
+              label: 'Password Confirm',
             ),
           ),
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
-              padding: const EdgeInsets.only(right: 14,top: 15),
-              child: LoginButton(
-                  title: 'Sign up',
-                  onPressed: () {}
-              ),
+              padding: const EdgeInsets.only(right: 14, top: 15),
+              child: LoginButton(title: 'Sign up', onPressed: () {}),
             ),
           ),
           const Spacer(),
           RichText(
-              text: TextSpan(
-                  children:  <TextSpan>[
-                    const TextSpan(text: 'Already have an account? ',style: TextStyle(fontSize: 20,color: Colors.grey,fontWeight: FontWeight.w600)),
-                    TextSpan(
-                        text: 'Sign in',
-                        recognizer: TapGestureRecognizer()..onTap = () => Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false),
-                        style: const TextStyle(fontSize: 20,color: Colors.orange,fontWeight: FontWeight.w600))
-                  ]
-              )
-          ),
+              text: TextSpan(children: <TextSpan>[
+            const TextSpan(
+                text: 'Already have an account? ',
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600)),
+            TextSpan(
+                text: 'Sign in',
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () => Navigator.pushNamedAndRemoveUntil(
+                      context, '/login', (route) => false),
+                style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.orange,
+                    fontWeight: FontWeight.w600))
+          ])),
           const SizedBox(
             height: 15,
           )
-
-
         ],
       ),
     );

@@ -11,9 +11,9 @@ class SpinKitDoubleBounce extends StatefulWidget {
     this.duration = const Duration(milliseconds: 2000),
     this.controller,
   })  : assert(
-  !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-      !(itemBuilder == null && color == null),
-  'You should specify either a itemBuilder or a color'),
+            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
+                !(itemBuilder == null && color == null),
+            'You should specify either a itemBuilder or a color'),
         super(key: key);
 
   final Color? color;
@@ -67,6 +67,6 @@ class _SpinKitDoubleBounceState extends State<SpinKitDoubleBounce>
   Widget _itemBuilder(int index) => widget.itemBuilder != null
       ? widget.itemBuilder!(context, index)
       : DecoratedBox(
-      decoration: BoxDecoration(
-          shape: BoxShape.circle, color: widget.color!.withOpacity(0.6)));
+          decoration: BoxDecoration(
+              shape: BoxShape.circle, color: widget.color!.withOpacity(0.6)));
 }

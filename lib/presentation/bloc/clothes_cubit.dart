@@ -6,18 +6,18 @@ import 'package:equatable/equatable.dart';
 part 'clothes_state.dart';
 
 class ClothesCubit extends Cubit<ClothesState> {
-  ClothesCubit({required this.apiRequest}) : super(ClothesInitial()){
+  ClothesCubit({required this.apiRequest}) : super(ClothesInitial()) {
     getAddProduct();
   }
 
   final ApiRequest apiRequest;
 
-    void getAddProduct() async {
-    try{
+  void getAddProduct() async {
+    try {
       emit(ClothesLoading());
       final products = await apiRequest.getAllProduct();
       emit(ClothesLoaded(products));
-    }catch(e){
+    } catch (e) {
       emit(ClothesError());
     }
   }

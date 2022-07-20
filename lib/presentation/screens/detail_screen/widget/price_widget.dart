@@ -6,11 +6,9 @@ class PriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        '$price\$',
-        style: const TextStyle(fontSize: 18, color: Colors.black),
-      ),
+    return Text(
+      '$price\$',
+      style: const TextStyle(fontSize: 18, color: Colors.black),
     );
   }
 }

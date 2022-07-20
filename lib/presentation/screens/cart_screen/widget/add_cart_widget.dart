@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/count_button.dart';
 
 class AddCartWidget extends StatelessWidget {
-  const AddCartWidget({
-    Key? key,
-    required this.title,
-    required this.imageUrl,
-    required this.price
-  }) : super(key: key);
+  const AddCartWidget(
+      {Key? key,
+      required this.title,
+      required this.imageUrl,
+      required this.price})
+      : super(key: key);
 
   final String title;
   final String imageUrl;
@@ -18,12 +18,11 @@ class AddCartWidget extends StatelessWidget {
     return Container(
       width: 200,
       height: 100,
-      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Card(
         elevation: 5,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12))
-        ),
+            borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Row(
           children: [
             const SizedBox(width: 100, height: 100, child: Placeholder()),
@@ -32,33 +31,31 @@ class AddCartWidget extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children:  [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
-                    child: Text(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
                           title,
-                        style: const TextStyle(
-                          fontSize: 25,
+                          style: const TextStyle(
+                            fontSize: 25,
+                          ),
                         ),
+                      ),
                     ),
-                  ),
-                ),
-                const Align(
-                  alignment: Alignment.topLeft,
-                  child: CountButton(),
-                ),
-              ]),
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: CountButton(),
+                    ),
+                  ]),
             ),
             const Spacer(),
-             Padding(
+            Padding(
               padding: const EdgeInsets.only(right: 20),
               child: Text(
-                  '$price\$',
-                  style: const TextStyle(
-                    fontSize: 20
-                  ),
+                '$price\$',
+                style: const TextStyle(fontSize: 20),
               ),
             )
           ],

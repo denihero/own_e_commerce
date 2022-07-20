@@ -10,8 +10,6 @@ class ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-
-
       child: SizedBox(
         width: 300,
         height: 350,
@@ -26,7 +24,7 @@ class ImageWidget extends StatelessWidget {
               width: 300,
               height: 300,
               placeholder: (context, url) =>
-              const SpinKitDoubleBounce(color: Colors.blue),
+                  const SpinKitDoubleBounce(color: Colors.blue),
               fit: BoxFit.contain,
             ),
           ),
