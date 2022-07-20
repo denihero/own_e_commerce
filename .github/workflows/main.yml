@@ -30,6 +30,8 @@ jobs:
           
       - name: Get deps
         run: flutter pub get
+      - name: Flutter version
+        run : flutter --version
       - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
