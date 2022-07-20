@@ -32,7 +32,7 @@ jobs:
         run: flutter pub get
       - name: Flutter version
         run : flutter --version
-      - run: flutter build apk
+      - run: flutter build apk --release --split-per-abi
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
