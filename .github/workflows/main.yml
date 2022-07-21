@@ -55,16 +55,6 @@ jobs:
           path: build/app/outputs/apk/release/app-old.apk
           
           
-  size-difference:
-      needs: build-android
-      runs-on: ubuntu-latest
-      steps:
-        - uses: microsoft/android-app-size-diff@v1.0.5
-          name: Run APK size comparision
-          with:
-            baseAppPath: build/app/outputs/apk/release/app-release.apk
-            targetAppPath: build/app/outputs/apk/release/app-release.apk
-            summaryOutputPath: summary.md
-            thresholds: 10, 10, 10, 10, 10
+
  
    
