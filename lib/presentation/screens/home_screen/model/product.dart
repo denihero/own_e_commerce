@@ -32,7 +32,6 @@ class Product {
         title: json["title"],
         price: json["price"].toDouble(),
         description: json["description"],
-
         image: json["image"],
         rating: Rating.fromJson(json["rating"]),
       );
@@ -42,13 +41,10 @@ class Product {
         "title": title,
         "price": price,
         "description": description,
-
         "image": image,
         "rating": rating?.toJson(),
       };
 }
-
-
 
 class Rating {
   Rating({
