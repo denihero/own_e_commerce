@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(fontSize: 20),
                     )),
                 ListTile(
-                  title: const Text('Home'),
+                  title: const Text('Home Screen'),
                   onTap: () {
                     Navigator.push(
                         context,
