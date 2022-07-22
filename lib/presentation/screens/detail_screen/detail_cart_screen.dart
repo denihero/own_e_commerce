@@ -19,7 +19,7 @@ class DetailCartScreen extends StatelessWidget {
       required this.description,
       required this.price,
       required this.product,
-      required this.count})
+      required this.count, required this.id})
       : super(key: key);
 
   final String imageUrl;
@@ -28,6 +28,7 @@ class DetailCartScreen extends StatelessWidget {
   final double price;
   final int count;
   final Product product;
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,10 @@ class DetailCartScreen extends StatelessWidget {
             children: [
               Stack(
                 alignment: Alignment.topCenter,
-                children: [ImageWidget(imageUrl: imageUrl)],
+                children: [
+                  Hero(
+                    tag: '$id',
+                    child: ImageWidget(imageUrl: imageUrl))],
               ),
               Align(
                 alignment: Alignment.topLeft,

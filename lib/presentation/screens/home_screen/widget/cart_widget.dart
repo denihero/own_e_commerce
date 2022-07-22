@@ -42,65 +42,69 @@ class CartWidget extends StatelessWidget {
                     title: title,
                     product: product,
                     count: count,
+                    id: id,
                   )),
         );
       },
       onLongPress: () => showBottomSheetCart(context),
-      child: Card(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 10,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: SizedBox(
-                  width: 150,
-                  height: 200,
-                  child: CachedNetworkImage(
-                    imageUrl: image,
-                    placeholder: (context, url) =>
-                        const SpinKitDoubleBounce(color: Colors.blue),
-                    fit: BoxFit.contain,
-                  )),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(left: 9, bottom: 5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '$price\$',
-                        style: priceStyle,
-                      ),
-                      Row(
-                        children: [
-                          Text('$rating'),
-                          const Icon(
-                            Icons.star,
-                            size: 17,
-                          ),
-                          const SizedBox(width: 10)
-                        ],
-                      )
-                    ],
-                  ),
-                  Text(
-                    title,
-                    style: titleStyle,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                ],
+      child: Hero(
+        tag: '$id',
+        child: Card(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: SizedBox(
+                    width: 150,
+                    height: 200,
+                    child: CachedNetworkImage(
+                      imageUrl: image,
+                      placeholder: (context, url) =>
+                          const SpinKitDoubleBounce(color: Colors.blue),
+                      fit: BoxFit.contain,
+                    )),
               ),
-            ),
-          ],
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(left: 9, bottom: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '$price\$',
+                          style: priceStyle,
+                        ),
+                        Row(
+                          children: [
+                            Text('$rating'),
+                            const Icon(
+                              Icons.star,
+                              size: 17,
+                            ),
+                            const SizedBox(width: 10)
+                          ],
+                        )
+                      ],
+                    ),
+                    Text(
+                      title,
+                      style: titleStyle,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
