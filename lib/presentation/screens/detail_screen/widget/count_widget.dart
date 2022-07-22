@@ -8,9 +8,7 @@ class CountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Количество: $count',
-      style: const TextStyle(
-        color: Colors.black87
-      ),
+      style: const TextStyle(color: Colors.black87),
     );
   }
 }

@@ -60,10 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListTile(
                   title: const Text('Cart'),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>  CartScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CartScreen()));
                   },
                 ),
               ],

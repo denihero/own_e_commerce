@@ -13,7 +13,8 @@ class AddCartWidget extends StatelessWidget {
       {Key? key,
       required this.title,
       required this.imageUrl,
-      required this.price, required this.product})
+      required this.price,
+      required this.product})
       : super(key: key);
 
   final String title;
@@ -33,11 +34,13 @@ class AddCartWidget extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(12))),
         child: Row(
           children: [
-            SizedBox(child: CachedNetworkImage(
+            SizedBox(
+                child: CachedNetworkImage(
               imageUrl: imageUrl,
-              width: 100, height: 100,
+              width: 100,
+              height: 100,
               placeholder: (context, url) =>
-              const SpinKitDoubleBounce(color: Colors.blue),
+                  const SpinKitDoubleBounce(color: Colors.blue),
               fit: BoxFit.contain,
             )),
             SizedBox(
@@ -72,11 +75,17 @@ class AddCartWidget extends StatelessWidget {
                   Transform.translate(
                     offset: const Offset(25, 0),
                     child: IconButton(
-                        onPressed: () async{
-                          Provider.of<ListCartProduct>(context,listen: false).removeProduct(product);
-                          Functions.showSnackBar('Товар успешно удален',context,Colors.red);
+                        onPressed: () async {
+                          Provider.of<ListCartProduct>(context, listen: false)
+                              .removeProduct(product);
+                          Functions.showSnackBar(
+                              'Товар успешно удален', context, Colors.red);
                         },
-                        icon: const Icon(Icons.delete_outline,color: Colors.red,size: 25,)),
+                        icon: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.red,
+                          size: 25,
+                        )),
                   ),
                   Text(
                     '$price\$',
@@ -90,6 +99,4 @@ class AddCartWidget extends StatelessWidget {
       ),
     );
   }
-
-
 }

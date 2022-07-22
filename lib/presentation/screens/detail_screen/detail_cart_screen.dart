@@ -12,12 +12,14 @@ import 'package:http_practice/presentation/screens/home_screen/model/product.dar
 import 'package:provider/provider.dart';
 
 class DetailCartScreen extends StatelessWidget {
-   const DetailCartScreen(
+  const DetailCartScreen(
       {Key? key,
       required this.imageUrl,
       required this.title,
       required this.description,
-      required this.price, required this.product, required this.count})
+      required this.price,
+      required this.product,
+      required this.count})
       : super(key: key);
 
   final String imageUrl;
@@ -77,26 +79,27 @@ class DetailCartScreen extends StatelessWidget {
               Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                    child: CountWidget(
-                        count: count
-                    ),
-                  )
-              ),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    child: CountWidget(count: count),
+                  )),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 child: DescriptionWidget(
                   description: description,
                 ),
               ),
             ],
           ),
-          bottomNavigationBar:  Padding(
-            padding: const EdgeInsets.only(bottom: 10,left: 20,right: 20),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
             child: AddCartButton(
               onPressed: () {
-                Provider.of<ListCartProduct>(context,listen: false).addCart(product);
-                Functions.showSnackBar('Товар успешно добавлен !', context, Colors.green);
+                Provider.of<ListCartProduct>(context, listen: false)
+                    .addCart(product);
+                Functions.showSnackBar(
+                    'Товар успешно добавлен !', context, Colors.green);
               },
             ),
           ),
@@ -104,5 +107,4 @@ class DetailCartScreen extends StatelessWidget {
       ),
     );
   }
-
 }

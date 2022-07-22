@@ -10,11 +10,9 @@ import 'package:provider/provider.dart';
 class CartScreen extends StatelessWidget {
   CartScreen({Key? key}) : super(key: key);
 
-
   final listCartProduct = ListCartProduct();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: cartColor,
         appBar: AppBar(
@@ -31,12 +29,16 @@ class CartScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  Provider.of<ListCartProduct>(context,listen: false).clearAll();
-                  Functions.showSnackBar('Все товары успшено удалены', context, Colors.red);
-
+                  Provider.of<ListCartProduct>(context, listen: false)
+                      .clearAll();
+                  Functions.showSnackBar(
+                      'Все товары успшено удалены', context, Colors.red);
                 },
-                icon: const Icon(Icons.playlist_remove,color: Colors.black,size: 30,)
-            )
+                icon: const Icon(
+                  Icons.playlist_remove,
+                  color: Colors.black,
+                  size: 30,
+                ))
           ],
         ),
         body: SingleChildScrollView(
@@ -44,32 +46,29 @@ class CartScreen extends StatelessWidget {
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.86,
-                child: Consumer<ListCartProduct>(
-                    builder: (context,product,_){
-                      return ListView.builder(
-                          //physics: const NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          itemCount: product.listOfProduct.length,
-                          itemBuilder: (context, index) {
-                            return AddCartWidget(
-                              title: product.listOfProduct[index].title!,
-                              price: product.listOfProduct[index].price!,
-                              imageUrl: product.listOfProduct[index].image!,
-                              product: product.listOfProduct[index],
-                            );
-                          });
-                    }
-                ),
+                child:
+                    Consumer<ListCartProduct>(builder: (context, product, _) {
+                  return ListView.builder(
+                      //physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      itemCount: product.listOfProduct.length,
+                      itemBuilder: (context, index) {
+                        return AddCartWidget(
+                          title: product.listOfProduct[index].title!,
+                          price: product.listOfProduct[index].price!,
+                          imageUrl: product.listOfProduct[index].image!,
+                          product: product.listOfProduct[index],
+                        );
+                      });
+                }),
               ),
-              Consumer<ListCartProduct>(
-                builder: (context,product,_){
-                  return Text('Total sum: ${product.sumProduct}',style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600
-                  ),);
-                }
-
-              )
+              Consumer<ListCartProduct>(builder: (context, product, _) {
+                return Text(
+                  'Total sum: ${product.sumProduct}',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.w600),
+                );
+              })
             ],
           ),
         ));

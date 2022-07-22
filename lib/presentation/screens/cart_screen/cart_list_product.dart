@@ -8,24 +8,21 @@ class ListCartProduct extends ChangeNotifier {
   List<Product> get listOfProduct => _listOfProduct;
 
   int get sumProduct {
-    return _sumProduct ;
+    return _sumProduct;
   }
 
-  void addCart(Product product){
+  void addCart(Product product) {
     _listOfProduct.add(product);
     notifyListeners();
   }
 
-  void removeProduct(Product product){
+  void removeProduct(Product product) {
     listOfProduct.remove(product);
     notifyListeners();
   }
 
-  void clearAll(){
+  void clearAll() {
     listOfProduct.clear();
     notifyListeners();
   }
-
-
-
 }

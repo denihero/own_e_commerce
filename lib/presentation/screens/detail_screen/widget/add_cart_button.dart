@@ -12,7 +12,8 @@ class AddCartButton extends StatelessWidget {
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.white),
-            shape: MaterialStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12)))),
+            shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12)))),
             overlayColor: MaterialStateProperty.all(Colors.blue),
             side: MaterialStateProperty.all(
                 const BorderSide(width: 2, color: Colors.black))),

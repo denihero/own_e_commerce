@@ -23,18 +23,12 @@ class ShoppingCartWidget extends StatelessWidget {
           child: CircleAvatar(
             maxRadius: 10,
             backgroundColor: Colors.redAccent,
-            child:
-                Consumer<ListCartProduct>(
-                    builder: (BuildContext context, value,_) {
-                      return Text(
-                          '${value.listOfProduct.length}',
-                          style: const TextStyle(
-                              fontSize: 15,
-                              color: Colors.white
-                          )
-                      );
-                    },
-                ),
+            child: Consumer<ListCartProduct>(
+              builder: (BuildContext context, value, _) {
+                return Text('${value.listOfProduct.length}',
+                    style: const TextStyle(fontSize: 15, color: Colors.white));
+              },
+            ),
           ),
         ),
       ],

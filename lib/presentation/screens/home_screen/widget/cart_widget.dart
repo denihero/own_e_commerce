@@ -23,7 +23,9 @@ class CartWidget extends StatelessWidget {
       required this.price,
       required this.description,
       required this.id,
-        required this.rating, required this.product, required this.count})
+      required this.rating,
+      required this.product,
+      required this.count})
       : super(key: key);
 
   @override
@@ -80,7 +82,10 @@ class CartWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text('$rating'),
-                          const Icon(Icons.star,size: 17,),
+                          const Icon(
+                            Icons.star,
+                            size: 17,
+                          ),
                           const SizedBox(width: 10)
                         ],
                       )
