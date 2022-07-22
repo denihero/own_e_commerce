@@ -77,7 +77,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 } else if (state is ClothesError) {
                   return const Text('Something get wrong');
-                } else if (state is ClothesLoaded) {
+                } else if(state is ClothesNoInternet){
+                  return const Center(
+                      child: Text(
+                          'No internet connection',style: TextStyle(
+                        fontSize: 20
+                      ),
+                      ),
+                  );
+                }else if (state is ClothesLoaded) {
                   final product = state.product;
                   return GridCart(
                     product: product,
