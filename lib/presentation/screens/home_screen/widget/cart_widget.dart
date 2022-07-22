@@ -14,6 +14,7 @@ class CartWidget extends StatelessWidget {
   final double price;
   final String description;
   final double rating;
+  final int count;
   final Product product;
   const CartWidget(
       {Key? key,
@@ -22,7 +23,7 @@ class CartWidget extends StatelessWidget {
       required this.price,
       required this.description,
       required this.id,
-        required this.rating, required this.product})
+        required this.rating, required this.product, required this.count})
       : super(key: key);
 
   @override
@@ -38,6 +39,7 @@ class CartWidget extends StatelessWidget {
                     description: description,
                     title: title,
                     product: product,
+                    count: count,
                   )),
         );
       },

@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_practice/core/constant/functions.dart';
-import 'package:http_practice/presentation/screens/cart_screen/model.dart';
+import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/count_button.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/bounce_loading.dart';

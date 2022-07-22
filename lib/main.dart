@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/behavior.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_screen.dart';
-import 'package:http_practice/presentation/screens/cart_screen/model.dart';
+import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/home_screen/home_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/api_request/api_request.dart';
 import 'package:http_practice/presentation/screens/login/login_screen.dart';

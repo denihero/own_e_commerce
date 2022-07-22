@@ -7,11 +7,12 @@ class AddCartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: 100,
       height: 50,
       child: ElevatedButton(
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.white),
+            shape: MaterialStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(12)))),
             overlayColor: MaterialStateProperty.all(Colors.blue),
             side: MaterialStateProperty.all(
                 const BorderSide(width: 2, color: Colors.black))),

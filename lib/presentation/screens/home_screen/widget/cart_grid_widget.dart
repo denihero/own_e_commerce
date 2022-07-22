@@ -16,7 +16,7 @@ class _GridCartState extends State<GridCart> {
     final double itemHeight = MediaQuery.of(context).size.height / 4.7;
     final double itemWidth = MediaQuery.of(context).size.width / 3.3;
     return GridView.builder(
-        addAutomaticKeepAlives: false,
+        addAutomaticKeepAlives: true,
         shrinkWrap: true,
         //physics: const BouncingScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -34,6 +34,7 @@ class _GridCartState extends State<GridCart> {
             id: widget.product[index].id!,
             rating: widget.product[index].rating!.rate!,
             product: widget.product[index],
+            count: widget.product[index].rating!.count!,
           );
         });
   }

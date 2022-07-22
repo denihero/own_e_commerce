@@ -3,7 +3,7 @@ import 'package:http_practice/core/constant/colors.dart';
 import 'package:http_practice/core/constant/functions.dart';
 
 import 'package:http_practice/core/constant/string.dart';
-import 'package:http_practice/presentation/screens/cart_screen/model.dart';
+import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/add_cart_widget.dart';
 import 'package:provider/provider.dart';
 
