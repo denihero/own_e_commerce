@@ -11,7 +11,7 @@ class DescriptionWidget extends StatelessWidget {
       description,
       overflow: TextOverflow.ellipsis,
       maxLines: 3,
-      style: const TextStyle(fontSize: 16),
+      style: const TextStyle(fontSize: 16,color: Colors.grey),
     );
   }
 }

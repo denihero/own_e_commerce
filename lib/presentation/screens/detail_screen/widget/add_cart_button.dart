@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AddCartButton extends StatelessWidget {
-  const AddCartButton({Key? key}) : super(key: key);
+  const AddCartButton({Key? key, required this.onPressed}) : super(key: key);
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class AddCartButton extends StatelessWidget {
             overlayColor: MaterialStateProperty.all(Colors.blue),
             side: MaterialStateProperty.all(
                 const BorderSide(width: 2, color: Colors.black))),
-        onPressed: () {},
+        onPressed: onPressed,
         child: const Text(
           'Добавить в корзину',
           style: TextStyle(fontSize: 23, color: Colors.black),

@@ -9,7 +9,7 @@ class TitleWidget extends StatelessWidget {
     return Text(
       title,
       style: const TextStyle(
-          fontSize: 22, overflow: TextOverflow.ellipsis, color: Colors.grey),
+          fontSize: 22, overflow: TextOverflow.ellipsis, color: Colors.black),
     );
   }
 }

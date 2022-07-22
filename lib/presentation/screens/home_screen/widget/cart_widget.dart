@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/style.dart';
+import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/bottom_sheet_detail_cart_widget.dart';
 
 import '../../detail_screen/detail_cart_screen.dart';
@@ -12,13 +13,16 @@ class CartWidget extends StatelessWidget {
   final String title;
   final double price;
   final String description;
+  final double rating;
+  final Product product;
   const CartWidget(
       {Key? key,
       required this.image,
       required this.title,
       required this.price,
       required this.description,
-      required this.id})
+      required this.id,
+        required this.rating, required this.product})
       : super(key: key);
 
   @override
@@ -33,6 +37,7 @@ class CartWidget extends StatelessWidget {
                     price: price,
                     description: description,
                     title: title,
+                    product: product,
                   )),
         );
       },
@@ -63,9 +68,21 @@ class CartWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    '$price\$',
-                    style: priceStyle,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '$price\$',
+                        style: priceStyle,
+                      ),
+                      Row(
+                        children: [
+                          Text('$rating'),
+                          const Icon(Icons.star,size: 17,),
+                          const SizedBox(width: 10)
+                        ],
+                      )
+                    ],
                   ),
                   Text(
                     title,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http_practice/presentation/screens/cart_screen/model.dart';
+import 'package:provider/provider.dart';
 
 class ShoppingCartWidget extends StatelessWidget {
   const ShoppingCartWidget({Key? key}) : super(key: key);
@@ -9,20 +11,30 @@ class ShoppingCartWidget extends StatelessWidget {
       children: [
         IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, 'cart_screen');
+              Navigator.pushNamed(context, '/cart_screen');
             },
             icon: const Icon(
               Icons.shopping_cart,
               size: 28,
               color: Colors.black,
             )),
-        const Positioned(
+        Positioned(
           right: 1,
           child: CircleAvatar(
             maxRadius: 10,
             backgroundColor: Colors.redAccent,
             child:
-                Text('0', style: TextStyle(fontSize: 15, color: Colors.white)),
+                Consumer<ListCartProduct>(
+                    builder: (BuildContext context, value,_) {
+                      return Text(
+                          '${value.listOfProduct.length}',
+                          style: const TextStyle(
+                              fontSize: 15,
+                              color: Colors.white
+                          )
+                      );
+                    },
+                ),
           ),
         ),
       ],

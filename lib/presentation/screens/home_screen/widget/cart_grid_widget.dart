@@ -32,6 +32,8 @@ class _GridCartState extends State<GridCart> {
             price: widget.product[index].price!,
             description: widget.product[index].description!,
             id: widget.product[index].id!,
+            rating: widget.product[index].rating!.rate!,
+            product: widget.product[index],
           );
         });
   }
