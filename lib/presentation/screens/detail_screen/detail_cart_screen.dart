@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/presentation/screens/cart_screen/model.dart';
 import 'package:http_practice/presentation/screens/detail_screen/widget/add_cart_button.dart';
 import 'package:http_practice/presentation/screens/detail_screen/widget/description_widget.dart';
@@ -80,24 +81,7 @@ class DetailCartScreen extends StatelessWidget {
             onPressed: () {
               Provider.of<ListCartProduct>(context,listen: false).addCart(product);
 
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    behavior: SnackBarBehavior.floating,
-                    width: 200,
-                    duration: Duration(milliseconds: 1500),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12))
-                    ),
-                    backgroundColor: Colors.green,
-                      content: Text(
-                          'Товар успешно добавлен !',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white
-                        ),
-                      ),
-                  )
-              );
+              Functions.showSnackBar('Товар успешно добавлен !', context, Colors.green);
             },
           ),
         ),

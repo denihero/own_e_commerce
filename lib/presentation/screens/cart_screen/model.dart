@@ -21,6 +21,11 @@ class ListCartProduct extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clearAll(){
+    listOfProduct.clear();
+    notifyListeners();
+  }
+
 
 
 }

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/presentation/screens/cart_screen/model.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/count_button.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
@@ -73,6 +74,7 @@ class AddCartWidget extends StatelessWidget {
                     child: IconButton(
                         onPressed: () async{
                           Provider.of<ListCartProduct>(context,listen: false).removeProduct(product);
+                          Functions.showSnackBar('Товар успешно удален',context,Colors.red);
                         },
                         icon: const Icon(Icons.delete_outline,color: Colors.red,size: 25,)),
                   ),
@@ -88,5 +90,6 @@ class AddCartWidget extends StatelessWidget {
       ),
     );
   }
+
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/colors.dart';
+import 'package:http_practice/core/constant/functions.dart';
 
 import 'package:http_practice/core/constant/string.dart';
 import 'package:http_practice/presentation/screens/cart_screen/model.dart';
@@ -27,6 +28,16 @@ class CartScreen extends StatelessWidget {
             },
             color: Colors.black,
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Provider.of<ListCartProduct>(context,listen: false).clearAll();
+                  Functions.showSnackBar('Все товары успшено удалены', context, Colors.red);
+
+                },
+                icon: const Icon(Icons.playlist_remove,color: Colors.black,size: 30,)
+            )
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -36,7 +47,7 @@ class CartScreen extends StatelessWidget {
                 child: Consumer<ListCartProduct>(
                     builder: (context,product,_){
                       return ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
+                          //physics: const NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.vertical,
                           itemCount: product.listOfProduct.length,
                           itemBuilder: (context, index) {
