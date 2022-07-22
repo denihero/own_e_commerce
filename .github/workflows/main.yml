@@ -71,6 +71,8 @@ jobs:
           baseAppPath: build/app/outputs/apk/release/app-release.apk
           targetAppPath: build/app/outputs/apk/release/app-release.apk
           summaryOutputPath: summary.md
+          metrics: apkSize, installSize, arscFile, nativeLibs, dexFiles
+          thresholds: 10, 10, 10, 10, 10
       
           
 
