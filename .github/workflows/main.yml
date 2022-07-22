@@ -58,21 +58,13 @@ jobs:
     needs: build-android
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'beta'
-      - name: Android App size difference
-        uses: microsoft/android-app-size-diff@v1.0.5
-        with:
-          baseAppPath: build/app/outputs/apk/release/app-release.apk
-          targetAppPath: build/app/outputs/apk/release/app-release.apk
-          summaryOutputPath: summary.md
-          metrics: apkSize, installSize, arscFile, nativeLibs, dexFiles
-          thresholds: 10, 10, 10, 10, 10
+      - name: Get current time
+        uses: gerred/current-time@v1.0.0
+        id: current-time
+      - name: Use current time
+        env:
+         TIME: "${{ steps.current-time.outputs.time }}"
+        run: echo $TIME
       
           
 
