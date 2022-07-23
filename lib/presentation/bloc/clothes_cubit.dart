@@ -21,6 +21,9 @@ class ClothesCubit extends Cubit<ClothesState> {
       if(connectivityResult == ConnectivityResult.mobile) {
         final products = await apiRequest.getAllProduct();
         emit(ClothesLoaded(products));
+      }else if(connectivityResult == ConnectivityResult.wifi){
+        final products = await apiRequest.getAllProduct();
+        emit(ClothesLoaded(products));
       }else if(connectivityResult == ConnectivityResult.none){
         emit(ClothesNoInternet());
       }
