@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
@@ -64,6 +65,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(builder: (context) => CartScreen()));
                   },
                 ),
+                const Spacer(),
+                ListTile(
+                  title: const Text('Sign out'),
+                  onTap: () async {
+                    final FirebaseAuth? _auth = FirebaseAuth.instance;
+                    final User? user = _auth?.currentUser;
+
+                    if (user == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('No one has signed in.'),
+                      ));
+                      return;
+                    }
+                    _auth?.signOut;
+                  },
+                )
               ],
             ),
           ),
@@ -77,15 +94,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 } else if (state is ClothesError) {
                   return const Text('Something get wrong');
-                } else if(state is ClothesNoInternet){
+                } else if (state is ClothesNoInternet) {
                   return const Center(
-                      child: Text(
-                          'No internet connection',style: TextStyle(
-                        fontSize: 20
-                      ),
-                      ),
+                    child: Text(
+                      'No internet connection',
+                      style: TextStyle(fontSize: 20),
+                    ),
                   );
-                }else if (state is ClothesLoaded) {
+                } else if (state is ClothesLoaded) {
                   final product = state.product;
                   return GridCart(
                     product: product,

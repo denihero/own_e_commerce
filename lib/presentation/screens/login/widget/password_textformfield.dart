@@ -26,6 +26,9 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
         textInputAction: TextInputAction.next,
         obscureText: hidePassword,
         validator: (value) {
+          if(value == null|| value.isEmpty){
+            return 'Please enter the email';
+          }
           return null;
         },
         style: const TextStyle(fontSize: 19),

@@ -42,9 +42,9 @@ class ShopApp extends StatelessWidget {
         child: MaterialApp(
           scrollBehavior: MyBehavior(),
           debugShowCheckedModeBanner: false,
-          initialRoute: '/',
+          initialRoute: '/login',
           routes: {
-            '/': (context) => const HomeScreen(),
+            '/home': (context) => const HomeScreen(),
             '/login': (context) => const LoginScreen(),
             '/cart_screen': (context) => CartScreen(),
             '/register_screen': (context) => const RegisterScreen()

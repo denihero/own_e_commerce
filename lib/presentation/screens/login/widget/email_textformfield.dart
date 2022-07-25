@@ -17,6 +17,12 @@ class EmailTextFormField extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         textAlignVertical: TextAlignVertical.center,
         textInputAction: TextInputAction.next,
+        validator: (value) {
+          if(value == null || value.isEmpty){
+            return 'Please enter the text';
+          }
+          return null;
+        },
         style: const TextStyle(fontSize: 19),
         decoration: const InputDecoration(
             enabledBorder: OutlineInputBorder(
