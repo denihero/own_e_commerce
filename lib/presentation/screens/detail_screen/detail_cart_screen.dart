@@ -14,21 +14,11 @@ import 'package:provider/provider.dart';
 class DetailCartScreen extends StatelessWidget {
   const DetailCartScreen(
       {Key? key,
-      required this.imageUrl,
-      required this.title,
-      required this.description,
-      required this.price,
       required this.product,
-      required this.count, required this.id})
+     })
       : super(key: key);
 
-  final String imageUrl;
-  final String title;
-  final String description;
-  final double price;
-  final int count;
   final Product product;
-  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +41,7 @@ class DetailCartScreen extends StatelessWidget {
                   Navigator.pop(context);
                 }),
             title: Text(
-              title,
+              product.title!,
               style: const TextStyle(color: Colors.black),
             ),
           ),
@@ -61,15 +51,15 @@ class DetailCartScreen extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 children: [
                   Hero(
-                    tag: '$id',
-                    child: ImageWidget(imageUrl: imageUrl))],
+                    tag: '${product.id}',
+                    child: ImageWidget(imageUrl: product.image!))],
               ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: TitleWidget(title: title),
+                  child: TitleWidget(title:  product.title!),
                 ),
               ),
               Align(
@@ -77,7 +67,7 @@ class DetailCartScreen extends StatelessWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: PriceWidget(price: price),
+                  child: PriceWidget(price:  product.price!),
                 ),
               ),
               Align(
@@ -85,13 +75,13 @@ class DetailCartScreen extends StatelessWidget {
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                    child: CountWidget(count: count),
+                    child: CountWidget(count:  product.rating!.count!),
                   )),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 child: DescriptionWidget(
-                  description: description,
+                  description:  product.description!,
                 ),
               ),
             ],

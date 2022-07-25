@@ -8,24 +8,11 @@ import '../../detail_screen/detail_cart_screen.dart';
 import 'bounce_loading.dart';
 
 class CartWidget extends StatelessWidget {
-  final int id;
-  final String image;
-  final String title;
-  final double price;
-  final String description;
-  final double rating;
-  final int count;
   final Product product;
   const CartWidget(
       {Key? key,
-      required this.image,
-      required this.title,
-      required this.price,
-      required this.description,
-      required this.id,
-      required this.rating,
       required this.product,
-      required this.count})
+      })
       : super(key: key);
 
   @override
@@ -36,19 +23,13 @@ class CartWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => DetailCartScreen(
-                    imageUrl: image,
-                    price: price,
-                    description: description,
-                    title: title,
                     product: product,
-                    count: count,
-                    id: id,
                   )),
         );
       },
-      onLongPress: () => showBottomSheetCart(context),
+      //onLongPress: () => showBottomSheetCart(context),
       child: Hero(
-        tag: '$id',
+        tag: '${product.id}',
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
           elevation: 10,
@@ -63,7 +44,7 @@ class CartWidget extends StatelessWidget {
                     width: 150,
                     height: 200,
                     child: CachedNetworkImage(
-                      imageUrl: image,
+                      imageUrl: product.image!,
                       placeholder: (context, url) =>
                           const SpinKitDoubleBounce(color: Colors.blue),
                       fit: BoxFit.contain,
@@ -79,12 +60,12 @@ class CartWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '$price\$',
+                          '${product.price}\$',
                           style: priceStyle,
                         ),
                         Row(
                           children: [
-                            Text('$rating'),
+                            Text('${product.rating!.rate}'),
                             const Icon(
                               Icons.star,
                               size: 17,
@@ -95,7 +76,7 @@ class CartWidget extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      title,
+                      product.title!,
                       style: titleStyle,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,

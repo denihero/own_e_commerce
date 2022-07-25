@@ -27,14 +27,7 @@ class _GridCartState extends State<GridCart> {
         itemCount: widget.product.length,
         itemBuilder: (context, index) {
           return CartWidget(
-            image: widget.product[index].image!,
-            title: widget.product[index].title!,
-            price: widget.product[index].price!,
-            description: widget.product[index].description!,
-            id: widget.product[index].id!,
-            rating: widget.product[index].rating!.rate!,
             product: widget.product[index],
-            count: widget.product[index].rating!.count!,
           );
         });
   }
