@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
-import 'package:http_practice/presentation/screens/cart_screen/cart_screen.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/cart_grid_widget.dart';
+import 'package:http_practice/presentation/screens/home_screen/widget/shimmer_loading_widget.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/shopping_cart_icon_widget.dart';
 
 import 'package:http_practice/core/constant/string.dart';
@@ -34,64 +33,26 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(color: Colors.black),
             ),
           ),
-          drawer: Drawer(
-            backgroundColor: Colors.white,
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                const DrawerHeader(
-                    margin: EdgeInsets.only(bottom: 0, top: 0),
-                    padding: EdgeInsets.only(top: 130, left: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                    ),
-                    child: Text(
-                      'User name',
-                      style: TextStyle(fontSize: 20),
-                    )),
-                ListTile(
-                  title: const Text('Home Screen'),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()));
-                  },
-                ),
-                ListTile(
-                  title: const Text('Cart'),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CartScreen()));
-                  },
-                ),
-                const Spacer(),
-                ListTile(
-                  title: const Text('Sign out'),
-                  onTap: () async {
-                    final FirebaseAuth? _auth = FirebaseAuth.instance;
-                    final User? user = _auth?.currentUser;
-
-                    if (user == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('No one has signed in.'),
-                      ));
-                      return;
-                    }
-                    _auth?.signOut;
-                  },
-                )
-              ],
-            ),
-          ),
           body: Padding(
             padding: const EdgeInsets.only(top: 10),
             child: Center(child: BlocBuilder<ClothesCubit, ClothesState>(
               builder: (context, state) {
                 if (state is ClothesLoading) {
-                  return const CircularProgressIndicator(
-                    color: Colors.black,
-                  );
+                  final double itemHeight = MediaQuery.of(context).size.height / 4.7;
+                  final double itemWidth = MediaQuery.of(context).size.width / 3.3;
+                  return GridView.builder(
+                      addAutomaticKeepAlives: true,
+                      shrinkWrap: true,
+                      //physics: const BouncingScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: (itemWidth / itemHeight),
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 4,
+                          crossAxisSpacing: 4),
+                      itemCount: 6,
+                      itemBuilder: (context, index) {
+                        return const ShimmerLoadingWidget();
+                      });
                 } else if (state is ClothesError) {
                   return const Text('Something get wrong');
                 } else if (state is ClothesNoInternet) {
