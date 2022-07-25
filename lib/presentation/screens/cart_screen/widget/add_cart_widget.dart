@@ -11,15 +11,9 @@ import 'package:provider/provider.dart';
 class AddCartWidget extends StatelessWidget {
   const AddCartWidget(
       {Key? key,
-      required this.title,
-      required this.imageUrl,
-      required this.price,
       required this.product})
       : super(key: key);
 
-  final String title;
-  final String imageUrl;
-  final double price;
   final Product product;
 
   @override
@@ -36,7 +30,7 @@ class AddCartWidget extends StatelessWidget {
           children: [
             SizedBox(
                 child: CachedNetworkImage(
-              imageUrl: imageUrl,
+              imageUrl: product.image!,
               width: 100,
               height: 100,
               placeholder: (context, url) =>
@@ -54,7 +48,7 @@ class AddCartWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 10),
                         child: Text(
-                          title,
+                          product.title!,
                           style: const TextStyle(
                             fontSize: 20,
                           ),
@@ -88,7 +82,7 @@ class AddCartWidget extends StatelessWidget {
                         )),
                   ),
                   Text(
-                    '$price\$',
+                    '${product.price!}\$',
                     style: const TextStyle(fontSize: 20),
                   ),
                 ],

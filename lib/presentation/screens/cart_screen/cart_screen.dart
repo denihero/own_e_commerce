@@ -54,9 +54,6 @@ class CartScreen extends StatelessWidget {
                       itemCount: product.listOfProduct.length,
                       itemBuilder: (context, index) {
                         return AddCartWidget(
-                          title: product.listOfProduct[index].title!,
-                          price: product.listOfProduct[index].price!,
-                          imageUrl: product.listOfProduct[index].image!,
                           product: product.listOfProduct[index],
                         );
                       });
@@ -64,7 +61,7 @@ class CartScreen extends StatelessWidget {
               ),
               Consumer<ListCartProduct>(builder: (context, product, _) {
                 return Text(
-                  'Total sum: ${product.sumProduct}',
+                  'Total sum: ${product.sumProduct}\$',
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w600),
                 );
