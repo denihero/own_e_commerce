@@ -3,12 +3,11 @@ import 'package:http_practice/presentation/screens/home_screen/model/product.dar
 
 class ListCartProduct extends ChangeNotifier {
   final List<Product> _listOfProduct = [];
-  late final int _sumProduct = 0;
 
   List<Product> get listOfProduct => _listOfProduct;
 
-  int get sumProduct {
-    return _sumProduct;
+  double? get sumProduct {
+    return _listOfProduct.fold(0, (previousValue, element) => previousValue! + element.price!);
   }
 
   void addCart(Product product) {
