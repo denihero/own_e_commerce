@@ -20,8 +20,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController passwordConfirmController =
-  TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -73,6 +71,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
+                    child: NameTextFormField(controller: nameController),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: EmailTextFormField(controller: emailController),
                   ),
                   const SizedBox(
@@ -94,6 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
                               context.read<AuthBloc>().add(AuthRegistered(
+                                  name: nameController.text,
                                   emailController: emailController,
                                   passwordController: passwordController,
                                   context: context,

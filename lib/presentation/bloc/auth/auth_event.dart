@@ -14,9 +14,10 @@ class AuthLogin extends AuthEvent {
 
 }
 class AuthRegistered extends AuthEvent {
+  final String name;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final BuildContext context;
 
-  AuthRegistered({required this.emailController,required this.passwordController,required this.context});
+  AuthRegistered({required this.name,required this.emailController,required this.passwordController,required this.context});
 }
