@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children:  [
                  DrawerHeader(
                   decoration: const BoxDecoration(
-                    color: Colors.blue
+                    color: Colors.deepOrangeAccent
                   ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const Spacer(),
                 ListTile(
-                  title: const Text('Sign out'),
-                  leading: const Icon(Icons.exit_to_app),
+                  title: const Text('Sign out',style: TextStyle(fontSize: 20),),
+                  leading: const Icon(Icons.exit_to_app,size: 25,),
                   onTap: () async{
                     await FirebaseAuth.instance.signOut();
                     Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
