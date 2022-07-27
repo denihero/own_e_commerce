@@ -20,9 +20,12 @@ class EmailTextFormField extends StatelessWidget {
         validator: (value) {
           if(value == null || value.isEmpty){
             return 'Please enter the text';
+          }else if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+            return 'Email not match ';
           }
           return null;
         },
+
         style: const TextStyle(fontSize: 19),
         decoration: const InputDecoration(
             enabledBorder: OutlineInputBorder(

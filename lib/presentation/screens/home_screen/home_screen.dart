@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
@@ -31,6 +32,22 @@ class _HomeScreenState extends State<HomeScreen> {
             title: const Text(
               Strings.homeScreenAppBarTitle,
               style: TextStyle(color: Colors.black),
+            ),
+
+          ),
+          drawer: Drawer(
+            child: Column(
+              children:  [
+                const Spacer(),
+                ListTile(
+                  title: const Text('Sign out'),
+                  leading: const Icon(Icons.exit_to_app),
+                  onTap: () async{
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+                  },
+                )
+              ],
             ),
           ),
           body: Padding(

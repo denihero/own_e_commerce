@@ -61,7 +61,7 @@ class CartScreen extends StatelessWidget {
               ),
               Consumer<ListCartProduct>(builder: (context, product, _) {
                 return Text(
-                  'Total sum: ${product.sumProduct}\$',
+                  'Total sum: ${product.sumProduct!.roundToDouble()}\$',
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.w600),
                 );
