@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/detail_screen/widget/add_cart_button.dart';
@@ -12,11 +11,10 @@ import 'package:http_practice/presentation/screens/home_screen/model/product.dar
 import 'package:provider/provider.dart';
 
 class DetailCartScreen extends StatelessWidget {
-  const DetailCartScreen(
-      {Key? key,
-      required this.product,
-     })
-      : super(key: key);
+  const DetailCartScreen({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
 
   final Product product;
 
@@ -51,15 +49,16 @@ class DetailCartScreen extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 children: [
                   Hero(
-                    tag: '${product.id}',
-                    child: ImageWidget(imageUrl: product.image!))],
+                      tag: '${product.id}',
+                      child: ImageWidget(imageUrl: product.image!))
+                ],
               ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: TitleWidget(title:  product.title!),
+                  child: TitleWidget(title: product.title!),
                 ),
               ),
               Align(
@@ -67,7 +66,7 @@ class DetailCartScreen extends StatelessWidget {
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: PriceWidget(price:  product.price!),
+                  child: PriceWidget(price: product.price!),
                 ),
               ),
               Align(
@@ -75,13 +74,13 @@ class DetailCartScreen extends StatelessWidget {
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                    child: CountWidget(count:  product.rating!.count!),
+                    child: CountWidget(count: product.rating!.count!),
                   )),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                 child: DescriptionWidget(
-                  description:  product.description!,
+                  description: product.description!,
                 ),
               ),
             ],

@@ -19,13 +19,11 @@ class DrawerWidget extends StatelessWidget {
                 children: [
                   Text(
                     '${AuthSystem.auth.currentUser?.displayName}',
-                    style: const TextStyle(
-                        fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
                     '${AuthSystem.auth.currentUser?.email}',
-                    style: const TextStyle(
-                        fontSize: 15, color: Colors.white),
+                    style: const TextStyle(fontSize: 15, color: Colors.white),
                   ),
                 ],
               )),

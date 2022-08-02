@@ -11,11 +11,6 @@ class AuthSystem {
   static Future<void> login(TextEditingController emailController,
       TextEditingController passwordController, BuildContext context) async {
     try {
-      final User? user = (await auth.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      ))
-          .user;
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
       Fluttertoast.showToast(msg: 'Вы успешно вошли');
     } on FirebaseAuthException catch (error) {
@@ -47,12 +42,12 @@ class AuthSystem {
 
   static Future<void> register(
       {required String name,
-        required TextEditingController emailController,
-        required TextEditingController passwordController,
-        required BuildContext context}) async {
+      required TextEditingController emailController,
+      required TextEditingController passwordController,
+      required BuildContext context}) async {
     try {
       final UserCredential userCredential =
-      (await auth.createUserWithEmailAndPassword(
+          (await auth.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       ));

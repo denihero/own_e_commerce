@@ -19,4 +19,5 @@ class ClothesLoaded extends ClothesState {
 }
 
 class ClothesError extends ClothesState {}
-class ClothesNoInternet extends ClothesState{}
+
+class ClothesNoInternet extends ClothesState {}

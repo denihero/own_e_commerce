@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/colors.dart';
 import 'package:http_practice/core/constant/functions.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:http_practice/core/constant/string.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/add_cart_widget.dart';
@@ -12,7 +11,6 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: cartColor,
         appBar: AppBar(
@@ -65,24 +63,20 @@ class CartScreen extends StatelessWidget {
                 children: [
                   Consumer<ListCartProduct>(builder: (context, product, _) {
                     return RichText(
-                        text: TextSpan(
-                          children: [
-                            const TextSpan(
-                              text: 'Total sum: ',
-                              style: TextStyle(fontSize: 17,fontWeight: FontWeight.w300,color: Colors.black)
-                            ),
-                            TextSpan(
-                                text: '${product.sumProduct!.roundToDouble()}\$',
-                                style: const TextStyle(fontSize: 17,fontWeight: FontWeight.w300,color: Colors.black)
-                            )
-                          ]
-                        )
-                    );
-                    // return Text(
-                    //   'Total sum: ${product.sumProduct!.roundToDouble()}\$',
-                    //   style: const TextStyle(
-                    //       fontSize: 20, fontWeight: FontWeight.w600),
-                    // );
+                        text: TextSpan(children: [
+                      const TextSpan(
+                          text: 'Total sum: ',
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black)),
+                      TextSpan(
+                          text: '${product.sumProduct!.roundToDouble()}\$',
+                          style: const TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black))
+                    ]));
                   }),
                   const SizedBox(
                     width: 20,
@@ -91,13 +85,17 @@ class CartScreen extends StatelessWidget {
                     height: 40,
                     width: 100,
                     child: ElevatedButton(
-                      style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all(Colors.white),
-                        backgroundColor: MaterialStateProperty.all(Colors.red),
-                      ),
+                        style: ButtonStyle(
+                          foregroundColor:
+                              MaterialStateProperty.all(Colors.white),
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.red),
+                        ),
                         onPressed: () {},
-                        child: const Text('Купить',style: TextStyle(fontSize: 16),)
-                    ),
+                        child: const Text(
+                          'Купить',
+                          style: TextStyle(fontSize: 16),
+                        )),
                   )
                 ],
               ),
@@ -108,6 +106,4 @@ class CartScreen extends StatelessWidget {
           ),
         ));
   }
-
-
 }

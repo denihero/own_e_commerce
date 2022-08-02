@@ -8,31 +8,33 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
-
     on<AuthLogin>((event, emit) {
-     emit(AuthLoading());
-     try{
-       AuthSystem.login(event.emailController, event.passwordController,event.context);
-       emit(AuthSuccess());
-     }catch(err,dtl){
-       print(err);
-       print(dtl);
-       emit(AuthError());
-     }
-    });
-
-
-    on<AuthRegistered>((event, emit) async {
       emit(AuthLoading());
-      try{
-        await AuthSystem.register(name: event.name, emailController: event.emailController, passwordController: event.passwordController, context: event.context);
+      try {
+        AuthSystem.login(
+            event.emailController, event.passwordController, event.context);
         emit(AuthSuccess());
-      }catch(err,dtl){
+      } catch (err, dtl) {
         print(err);
         print(dtl);
         emit(AuthError());
       }
     });
 
+    on<AuthRegistered>((event, emit) async {
+      emit(AuthLoading());
+      try {
+        await AuthSystem.register(
+            name: event.name,
+            emailController: event.emailController,
+            passwordController: event.passwordController,
+            context: event.context);
+        emit(AuthSuccess());
+      } catch (err, dtl) {
+        print(err);
+        print(dtl);
+        emit(AuthError());
+      }
+    });
   }
 }

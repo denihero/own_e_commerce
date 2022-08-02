@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http_practice/core/constant/auth.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/cart_grid_widget.dart';
@@ -19,17 +17,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   String dropDownValue = 'Сортировать';
 
   var key = Category.MEN_S_CLOTHING;
 
-  final Map<String,dynamic> categoryItems = {
-    'Сортировать':Category.ALL,
-    'Men\'s clothing':Category.MEN_S_CLOTHING,
-    'Jewelery':Category.JEWELERY,
-    'Electronics':Category.ELECTRONICS,
-    'Women\'s dress':Category.WOMEN_S_CLOTHING,
+  final Map<String, dynamic> categoryItems = {
+    'Сортировать': Category.ALL,
+    'Men\'s clothing': Category.MEN_S_CLOTHING,
+    'Jewelery': Category.JEWELERY,
+    'Electronics': Category.ELECTRONICS,
+    'Women\'s dress': Category.WOMEN_S_CLOTHING,
   };
 
   final items = <String>{
@@ -44,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromRGBO(251, 250, 245,1),
+          backgroundColor: const Color.fromRGBO(251, 250, 245, 1),
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,
@@ -67,46 +64,56 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                   Padding(
-                     padding: const EdgeInsets.only(left: 20),
-                     child: Container(
-                       width: 130,
-                       height: 40,
-                       decoration: BoxDecoration(
-                           border: Border.all(color: Colors.black),
-                         borderRadius: BorderRadius.circular(12)
-                       ),
-                       child: Center(
-                         child: DropdownButton<String>(
-                           dropdownColor:Colors.white,
-                           elevation: 5,
-                           underline: const SizedBox(),
-                           style: const TextStyle(color:Colors.black,fontSize: 15,fontWeight: FontWeight.w500),
-                           iconEnabledColor:Colors.black,
-                           alignment: Alignment.centerRight,
-                           borderRadius: const BorderRadius.all(Radius.circular(12)),
-                           icon: const Padding(
-                             padding: EdgeInsets.zero,
-                             child: Icon(Icons.keyboard_arrow_down_rounded,size: 26,),
-                           ),
-                           value: dropDownValue,
-                             items: items.map((String e) {
-                               return DropdownMenuItem<String>(
-                                 child: Text(e,textAlign: TextAlign.left,),
-                                 alignment: Alignment.centerLeft,
-                                 value: e,
-                               );
-                             }).toList(),
-                           onChanged: (String? newValue) {
-                              BlocProvider.of<ClothesCubit>(context).sortAllProduct(categoryItems[newValue]!);
-                             setState(() {
-                               dropDownValue = newValue!;
-                             });
-                           },
-                         ),
-                       ),
-                     ),
-                   )
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Container(
+                        width: 130,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                          child: DropdownButton<String>(
+                            dropdownColor: Colors.white,
+                            elevation: 5,
+                            underline: const SizedBox(),
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500),
+                            iconEnabledColor: Colors.black,
+                            alignment: Alignment.centerRight,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(12)),
+                            icon: const Padding(
+                              padding: EdgeInsets.zero,
+                              child: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                size: 26,
+                              ),
+                            ),
+                            value: dropDownValue,
+                            items: items.map((String e) {
+                              return DropdownMenuItem<String>(
+                                child: Text(
+                                  e,
+                                  textAlign: TextAlign.left,
+                                ),
+                                alignment: Alignment.centerLeft,
+                                value: e,
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              BlocProvider.of<ClothesCubit>(context)
+                                  .sortAllProduct(categoryItems[newValue]!);
+                              setState(() {
+                                dropDownValue = newValue!;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
                 Padding(
@@ -122,11 +129,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             addAutomaticKeepAlives: true,
                             shrinkWrap: true,
                             //physics: const BouncingScrollPhysics(),
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                childAspectRatio: (itemWidth / itemHeight),
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 4,
-                                crossAxisSpacing: 4),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    childAspectRatio: (itemWidth / itemHeight),
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 4,
+                                    crossAxisSpacing: 4),
                             itemCount: 6,
                             itemBuilder: (context, index) {
                               return const ShimmerLoadingWidget();
@@ -156,11 +164,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  sortProduct(String value){
-
-    switch(value){
+  sortProduct(String value) {
+    switch (value) {
       case 'Men\'s clothing':
-
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,116 +32,108 @@ class _RegisterScreenState extends State<RegisterScreen> {
           color: Colors.black,
         ),
       ),
-      body: BlocConsumer<AuthBloc, AuthState>(
-        builder: (context, state) {
-          if(state is AuthLoading){
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }else if(state is AuthError){
-            return const Center(
-              child: Text('Something get wrong'),
-            );
-          }else if(state is AuthInitial || state is AuthSuccess){
-            return Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 200,
+      body: BlocConsumer<AuthBloc, AuthState>(builder: (context, state) {
+        if (state is AuthLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is AuthError) {
+          return const Center(
+            child: Text('Something get wrong'),
+          );
+        } else if (state is AuthInitial || state is AuthSuccess) {
+          return Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 200,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 30),
+                    child: RichText(
+                        text: const TextSpan(children: <TextSpan>[
+                      TextSpan(
+                          text: 'Create Account',
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w900)),
+                    ])),
                   ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: RichText(
-                          text: const TextSpan(children: <TextSpan>[
-                            TextSpan(
-                                text: 'Create Account',
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w900)),
-                          ])),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: NameTextFormField(controller: nameController),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: EmailTextFormField(controller: emailController),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: PasswordTextFormField(controller: passwordController),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 14, top: 15),
-                      child: LoginButton(
-                          title: 'Sign up',
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              context.read<AuthBloc>().add(AuthRegistered(
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: NameTextFormField(controller: nameController),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: EmailTextFormField(controller: emailController),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: PasswordTextFormField(controller: passwordController),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 14, top: 15),
+                    child: LoginButton(
+                        title: 'Sign up',
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            context.read<AuthBloc>().add(AuthRegistered(
                                   name: nameController.text,
                                   emailController: emailController,
                                   passwordController: passwordController,
                                   context: context,
-                              ));
-                            }
-                            return null;
-                          }),
-                    ),
+                                ));
+                          }
+                          return null;
+                        }),
                   ),
-                  const Spacer(),
-                  RichText(
-                      text: TextSpan(children: <TextSpan>[
-                        const TextSpan(
-                            text: 'Already have an account? ',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w400)),
-                        TextSpan(
-                            text: 'Sign in',
-                            recognizer: TapGestureRecognizer()..onTap = () =>
-                                  Navigator.pushNamedAndRemoveUntil(
-                                      context, '/login', (route) => false),
-                            style: const TextStyle(
-                                fontSize: 20,
-                                color: Colors.orange,
-                                fontWeight: FontWeight.w600))
-                      ])),
-                  const SizedBox(
-                    height: 15,
-                  )
-                ],
-              ),
-            );
-          }
-          return const SizedBox();
-        },
-        listener: (context,state){
-          if(state is AuthSuccess){
-
-          }
-
+                ),
+                const Spacer(),
+                RichText(
+                    text: TextSpan(children: <TextSpan>[
+                  const TextSpan(
+                      text: 'Already have an account? ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400)),
+                  TextSpan(
+                      text: 'Sign in',
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => Navigator.pushNamedAndRemoveUntil(
+                            context, '/login', (route) => false),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.orange,
+                          fontWeight: FontWeight.w600))
+                ])),
+                const SizedBox(
+                  height: 15,
+                )
+              ],
+            ),
+          );
         }
-      ),
+        return const SizedBox();
+      }, listener: (context, state) {
+        if (state is AuthSuccess) {}
+      }),
     );
   }
-
-
 }

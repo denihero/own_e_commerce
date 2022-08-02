@@ -70,7 +70,7 @@ class Rating {
       };
 }
 
-enum Category { MEN_S_CLOTHING, JEWELERY, ELECTRONICS, WOMEN_S_CLOTHING,ALL}
+enum Category { MEN_S_CLOTHING, JEWELERY, ELECTRONICS, WOMEN_S_CLOTHING, ALL }
 
 final categoryValues = EnumValues({
   "electronics": Category.ELECTRONICS,

@@ -11,7 +11,6 @@ class GridCart extends StatefulWidget {
 }
 
 class _GridCartState extends State<GridCart> {
-
   @override
   Widget build(BuildContext context) {
     final double itemHeight = MediaQuery.of(context).size.height / 4.7;

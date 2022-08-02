@@ -1,8 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class Functions {
   static showSnackBar(String text, BuildContext context, Color color) {
@@ -23,5 +20,3 @@ class Functions {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
-
-

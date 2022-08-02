@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CountButton extends StatelessWidget {
-  const CountButton({Key? key}) : super(key: key);
+  const CountButton(
+      {Key? key, required this.increaseButton, required this.decreaseButton})
+      : super(key: key);
+
+  final Function() increaseButton;
+  final Function() decreaseButton;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class CountButton extends StatelessWidget {
               splashRadius: 20,
               color: Colors.grey,
               padding: EdgeInsets.zero,
-              onPressed: () {},
+              onPressed: decreaseButton,
               icon: const Icon(Icons.remove_circle)),
           const Text(
             '1',
@@ -24,7 +29,7 @@ class CountButton extends StatelessWidget {
               color: Colors.grey,
               splashRadius: 20,
               padding: EdgeInsets.zero,
-              onPressed: () {},
+              onPressed: increaseButton,
               icon: const Icon(Icons.add_circle)),
         ],
       ),

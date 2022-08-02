@@ -18,37 +18,39 @@ class ClothesCubit extends Cubit<ClothesState> {
       emit(ClothesLoading());
       var connectivityResult = await (Connectivity().checkConnectivity());
       print(connectivityResult);
-      if(connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
         final products = await apiRequest.getAllProduct();
         emit(ClothesLoaded(products));
-      }else if(connectivityResult == ConnectivityResult.none){
+      } else if (connectivityResult == ConnectivityResult.none) {
         emit(ClothesNoInternet());
       }
-    } catch (e,s) {
+    } catch (e, s) {
       print(e);
       print(s);
       emit(ClothesError());
     }
   }
 
-  void sortAllProduct(Category category) async{
+  void sortAllProduct(Category category) async {
     try {
       emit(ClothesLoading());
       var connectivityResult = await (Connectivity().checkConnectivity());
       print(connectivityResult);
-      if(connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
-        if(category == Category.ALL){
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        if (category == Category.ALL) {
           final products = await apiRequest.getAllProduct();
           emit(ClothesLoaded(products));
-        }else{
+        } else {
           final products = await apiRequest.getAllProduct();
           final key = products.where((element) => element.category == category);
           emit(ClothesLoaded(key));
         }
-      }else if(connectivityResult == ConnectivityResult.none){
+      } else if (connectivityResult == ConnectivityResult.none) {
         emit(ClothesNoInternet());
       }
-    } catch (e,s) {
+    } catch (e, s) {
       print(e);
       print(s);
       emit(ClothesError());

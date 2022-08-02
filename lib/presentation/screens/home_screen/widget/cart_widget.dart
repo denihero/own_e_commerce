@@ -2,18 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/style.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
-import 'package:http_practice/presentation/screens/home_screen/widget/bottom_sheet_detail_cart_widget.dart';
 
 import '../../detail_screen/detail_cart_screen.dart';
 import 'bounce_loading.dart';
 
 class CartWidget extends StatelessWidget {
   final Product product;
-  const CartWidget(
-      {Key? key,
-      required this.product,
-      })
-      : super(key: key);
+  const CartWidget({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -26,7 +26,7 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
         textInputAction: TextInputAction.next,
         obscureText: hidePassword,
         validator: (value) {
-          if(value == null|| value.isEmpty){
+          if (value == null || value.isEmpty) {
             return 'Please enter the password';
           }
           return null;

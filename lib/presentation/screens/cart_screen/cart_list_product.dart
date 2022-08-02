@@ -7,7 +7,8 @@ class ListCartProduct extends ChangeNotifier {
   List<Product> get listOfProduct => _listOfProduct;
 
   double? get sumProduct {
-    return _listOfProduct.fold(0, (previousValue, element) => previousValue! + element.price!);
+    return _listOfProduct.fold(
+        0, (previousValue, element) => previousValue! + element.price!);
   }
 
   void addCart(Product product) {

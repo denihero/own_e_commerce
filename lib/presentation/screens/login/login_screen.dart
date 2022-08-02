@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/core/constant/auth.dart';
-import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/presentation/screens/login/widget/email_textformfield.dart';
 import 'package:http_practice/presentation/screens/login/widget/login_button.dart';
 import 'package:http_practice/presentation/screens/login/widget/password_textformfield.dart';
@@ -28,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     AuthSystem.initializeFirebase(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
         resizeToAvoidBottomInset: false,
         body: BlocBuilder<AuthBloc, AuthState>(
           builder: (context, state) {
-            if(state is AuthInitial || state is AuthSuccess){
+            if (state is AuthInitial || state is AuthSuccess) {
               return Form(
                 key: _formKey,
                 child: Column(
@@ -49,16 +48,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.only(left: 30),
                         child: RichText(
                             text: const TextSpan(children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Login \n',
-                                  style: TextStyle(
-                                      fontSize: 30,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w900)),
-                              TextSpan(
-                                  text: 'Please sign in to continue',
-                                  style: TextStyle(fontSize: 20, color: Colors.grey))
-                            ])),
+                          TextSpan(
+                              text: 'Login \n',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w900)),
+                          TextSpan(
+                              text: 'Please sign in to continue',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.grey))
+                        ])),
                       ),
                     ),
                     const SizedBox(
@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child:
-                      PasswordTextFormField(controller: passwordController),
+                          PasswordTextFormField(controller: passwordController),
                     ),
                     const SizedBox(
                       height: 20,
@@ -87,11 +87,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             title: 'Login',
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                  context.read<AuthBloc>().add(AuthLogin(
-                                      emailController: emailController,
-                                      passwordController: passwordController,
-                                      context: context
-                                  ));
+                                context.read<AuthBloc>().add(AuthLogin(
+                                    emailController: emailController,
+                                    passwordController: passwordController,
+                                    context: context));
                               } else {
                                 return;
                               }
@@ -101,33 +100,33 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Spacer(),
                     RichText(
                         text: TextSpan(children: <TextSpan>[
-                          const TextSpan(
-                              text: 'Don\'t have an account ? ',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.grey,
-                                  fontWeight: FontWeight.w400)),
-                          TextSpan(
-                              text: 'Sign up',
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () =>
-                                    Navigator.pushNamed(context, '/register_screen'),
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.orange,
-                                  fontWeight: FontWeight.w600))
-                        ])),
+                      const TextSpan(
+                          text: 'Don\'t have an account ? ',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w400)),
+                      TextSpan(
+                          text: 'Sign up',
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Navigator.pushNamed(
+                                context, '/register_screen'),
+                          style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.orange,
+                              fontWeight: FontWeight.w600))
+                    ])),
                     const SizedBox(
                       height: 15,
                     )
                   ],
                 ),
               );
-            }else if(state is AuthLoading){
+            } else if (state is AuthLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            }else if(state is AuthError){
+            } else if (state is AuthError) {
               return const Center(
                 child: Text('Some thing get wronng'),
               );

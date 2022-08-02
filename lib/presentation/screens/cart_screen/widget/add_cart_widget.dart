@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/count_button.dart';
@@ -9,23 +8,32 @@ import 'package:http_practice/presentation/screens/home_screen/model/product.dar
 import 'package:http_practice/presentation/screens/home_screen/widget/bounce_loading.dart';
 import 'package:provider/provider.dart';
 
-class AddCartWidget extends StatelessWidget {
-  const AddCartWidget(
-      {Key? key,
-      required this.product})
-      : super(key: key);
+class AddCartWidget extends StatefulWidget {
+  const AddCartWidget({Key? key, required this.product}) : super(key: key);
 
   final Product product;
 
   @override
+  State<AddCartWidget> createState() => _AddCartWidgetState();
+}
+
+class _AddCartWidgetState extends State<AddCartWidget> {
+  double sum = 0.0;
+  @override
   Widget build(BuildContext context) {
+    double? generalProduct = widget.product.price;
+    sum = generalProduct!;
     return Container(
       width: 200,
       height: 140,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context,MaterialPageRoute(builder: (context) => DetailCartScreen(product: product)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      DetailCartScreen(product: widget.product)));
         },
         child: Card(
           elevation: 5,
@@ -34,10 +42,10 @@ class AddCartWidget extends StatelessWidget {
           child: Row(
             children: [
               Hero(
-                tag: '${product.id}',
+                tag: '${widget.product.id}',
                 child: SizedBox(
                     child: CachedNetworkImage(
-                  imageUrl: product.image!,
+                  imageUrl: widget.product.image!,
                   width: 100,
                   height: 100,
                   placeholder: (context, url) =>
@@ -54,21 +62,20 @@ class AddCartWidget extends StatelessWidget {
                       Align(
                         alignment: Alignment.topLeft,
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10,top: 4),
+                          padding: const EdgeInsets.only(left: 10, top: 4),
                           child: Text(
-                            product.title!,
+                            widget.product.title!,
                             maxLines: 4,
                             style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300
-                            ),
+                                fontSize: 20, fontWeight: FontWeight.w300),
                           ),
                         ),
                       ),
-                      const Align(
+                      Align(
                         alignment: Alignment.topLeft,
-                        child: CountButton(),
-                      ),
+                        child: CountButton(
+                            increaseButton: () {}, decreaseButton: () {}),
+                      )
                     ]),
               ),
               const Spacer(),
@@ -81,7 +88,7 @@ class AddCartWidget extends StatelessWidget {
                       child: IconButton(
                           onPressed: () async {
                             Provider.of<ListCartProduct>(context, listen: false)
-                                .removeProduct(product);
+                                .removeProduct(widget.product);
                             Functions.showSnackBar(
                                 'Товар успешно удален', context, Colors.red);
                           },
@@ -92,8 +99,9 @@ class AddCartWidget extends StatelessWidget {
                           )),
                     ),
                     Text(
-                      '${product.price!}\$',
-                      style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w400),
+                      '${sum}\$',
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),

@@ -19,12 +19,11 @@ class ShimmerLoadingWidget extends StatelessWidget {
               baseColor: Colors.grey[300]!,
               highlightColor: Colors.grey[200]!,
               child: Container(
-                  width: 150,
-                  height: 200,
-                  decoration: BoxDecoration(
+                width: 150,
+                height: 200,
+                decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(5)
-                  ),
+                    borderRadius: BorderRadius.circular(5)),
               ),
             ),
           ),

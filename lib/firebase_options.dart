@@ -65,7 +65,8 @@ class DefaultFirebaseOptions {
     projectId: 'e-commerce-5e669',
     databaseURL: 'https://e-commerce-5e669-default-rtdb.firebaseio.com',
     storageBucket: 'e-commerce-5e669.appspot.com',
-    iosClientId: '829389393313-8jf6jetoc3cvssb8lfjbc14dhh01ut56.apps.googleusercontent.com',
+    iosClientId:
+        '829389393313-8jf6jetoc3cvssb8lfjbc14dhh01ut56.apps.googleusercontent.com',
     iosBundleId: 'com.example.httpPractice',
   );
 }
