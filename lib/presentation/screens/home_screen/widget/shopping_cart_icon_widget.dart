@@ -16,7 +16,7 @@ class ShoppingCartWidget extends StatelessWidget {
             icon: const Icon(
               Icons.shopping_cart,
               size: 28,
-              color: Colors.black,
+              color: Colors.black87,
             )),
         Positioned(
           right: 1,

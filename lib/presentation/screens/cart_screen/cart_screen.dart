@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/colors.dart';
 import 'package:http_practice/core/constant/functions.dart';
-
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:http_practice/core/constant/string.dart';
 import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/add_cart_widget.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({Key? key}) : super(key: key);
+  const CartScreen({Key? key}) : super(key: key);
 
-  final listCartProduct = ListCartProduct();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         backgroundColor: cartColor,
         appBar: AppBar(
@@ -45,7 +45,7 @@ class CartScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.86,
+                height: MediaQuery.of(context).size.height * 0.84,
                 child:
                     Consumer<ListCartProduct>(builder: (context, product, _) {
                   return ListView.builder(
@@ -59,15 +59,55 @@ class CartScreen extends StatelessWidget {
                       });
                 }),
               ),
-              Consumer<ListCartProduct>(builder: (context, product, _) {
-                return Text(
-                  'Total sum: ${product.sumProduct!.roundToDouble()}\$',
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.w600),
-                );
-              })
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Consumer<ListCartProduct>(builder: (context, product, _) {
+                    return RichText(
+                        text: TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: 'Total sum: ',
+                              style: TextStyle(fontSize: 17,fontWeight: FontWeight.w300,color: Colors.black)
+                            ),
+                            TextSpan(
+                                text: '${product.sumProduct!.roundToDouble()}\$',
+                                style: const TextStyle(fontSize: 17,fontWeight: FontWeight.w300,color: Colors.black)
+                            )
+                          ]
+                        )
+                    );
+                    // return Text(
+                    //   'Total sum: ${product.sumProduct!.roundToDouble()}\$',
+                    //   style: const TextStyle(
+                    //       fontSize: 20, fontWeight: FontWeight.w600),
+                    // );
+                  }),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  SizedBox(
+                    height: 40,
+                    width: 100,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                        backgroundColor: MaterialStateProperty.all(Colors.red),
+                      ),
+                        onPressed: () {},
+                        child: const Text('Купить',style: TextStyle(fontSize: 16),)
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              )
             ],
           ),
         ));
   }
+
+
 }

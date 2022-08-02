@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/core/constant/auth.dart';
-import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/cart_grid_widget.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/shimmer_loading_widget.dart';
@@ -33,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
             title: const Text(
               Strings.homeScreenAppBarTitle,
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.black87),
             ),
 
           ),
@@ -43,13 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children:  [
                  DrawerHeader(
                   decoration: const BoxDecoration(
-                    color: Colors.deepOrangeAccent
+                    color: Colors.black87
                   ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('${AuthSystem.auth.currentUser?.displayName}',style: const TextStyle(fontSize: 20),),
-                        Text('${AuthSystem.auth.currentUser?.email}',style: const TextStyle(fontSize: 15),),
+                        Text('${AuthSystem.auth.currentUser?.displayName}',style: const TextStyle(fontSize: 20,color: Colors.white),),
+                        Text('${AuthSystem.auth.currentUser?.email}',style: const TextStyle(fontSize: 15,color: Colors.white),),
                       ],
                     )
                 ),
