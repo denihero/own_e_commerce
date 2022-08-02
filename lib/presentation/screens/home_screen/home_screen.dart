@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color.fromRGBO(251, 250, 245,1),
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.black),
             backgroundColor: Colors.transparent,
@@ -69,19 +70,19 @@ class _HomeScreenState extends State<HomeScreen> {
                    Padding(
                      padding: const EdgeInsets.only(left: 20),
                      child: Container(
-                       width: 150,
-                       height: 50,
+                       width: 130,
+                       height: 40,
                        decoration: BoxDecoration(
-                         color: Colors.black87,
+                           border: Border.all(color: Colors.black),
                          borderRadius: BorderRadius.circular(12)
                        ),
                        child: Center(
                          child: DropdownButton<String>(
-                           dropdownColor:Colors.black87,
+                           dropdownColor:Colors.white,
                            elevation: 5,
                            underline: const SizedBox(),
-                           style: const TextStyle(color:Colors.white,fontSize: 15,fontWeight: FontWeight.w500),
-                           iconEnabledColor:Colors.white,
+                           style: const TextStyle(color:Colors.black,fontSize: 15,fontWeight: FontWeight.w500),
+                           iconEnabledColor:Colors.black,
                            alignment: Alignment.centerRight,
                            borderRadius: const BorderRadius.all(Radius.circular(12)),
                            icon: const Padding(
@@ -91,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                            value: dropDownValue,
                              items: items.map((String e) {
                                return DropdownMenuItem<String>(
-                                 child: Text(e),
+                                 child: Text(e,textAlign: TextAlign.left,),
                                  alignment: Alignment.centerLeft,
                                  value: e,
                                );
