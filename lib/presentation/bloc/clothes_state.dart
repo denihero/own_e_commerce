@@ -13,7 +13,7 @@ class ClothesLoading extends ClothesState {}
 class ClothesLoaded extends ClothesState {
   ClothesLoaded(this.product);
 
-  final List<Product> product;
+  final Iterable<Product> product;
   @override
   List<Object?> get props => [product];
 }
