@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/colors.dart';
 import 'package:http_practice/core/constant/functions.dart';
 import 'package:http_practice/core/constant/string.dart';
-import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
+import 'package:http_practice/presentation/screens/cart_screen/cart_list_product_provider.dart';
 import 'package:http_practice/presentation/screens/cart_screen/widget/add_cart_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -71,7 +71,7 @@ class CartScreen extends StatelessWidget {
                               fontWeight: FontWeight.w300,
                               color: Colors.black)),
                       TextSpan(
-                          text: '${product.sumProduct!.roundToDouble()}\$',
+                          text: '${product.sumProduct}\$',
                           style: const TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w300,

@@ -23,18 +23,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final Map<String, dynamic> categoryItems = {
     'Сортировать': Category.ALL,
-    'Men\'s clothing': Category.MEN_S_CLOTHING,
-    'Jewelery': Category.JEWELERY,
-    'Electronics': Category.ELECTRONICS,
-    'Women\'s dress': Category.WOMEN_S_CLOTHING,
+    'Мужская одежда': Category.MEN_S_CLOTHING,
+    'Ювелирная': Category.JEWELERY,
+    'Электроника': Category.ELECTRONICS,
+    'Женская одежда': Category.WOMEN_S_CLOTHING,
   };
 
   final items = <String>{
     'Сортировать',
-    'Men\'s clothing',
-    'Jewelery',
-    'Electronics',
-    'Women\'s dress',
+    'Мужская одежда',
+    'Ювелирная',
+    'Электроника',
+    'Женская одежда',
   };
 
   @override
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Container(
-                        width: 130,
+                        width: 150,
                         height: 40,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
@@ -82,12 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500),
                             iconEnabledColor: Colors.black,
-                            alignment: Alignment.centerRight,
+                            alignment: Alignment.center,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(12)),
-                            icon: const Padding(
-                              padding: EdgeInsets.zero,
-                              child: Icon(
+                            icon: Transform.translate(
+                              offset: const Offset(-2, 0),
+                              child: const Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 size: 26,
                               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http_practice/core/constant/functions.dart';
-import 'package:http_practice/presentation/screens/cart_screen/cart_list_product.dart';
+import 'package:http_practice/presentation/screens/cart_screen/cart_list_product_provider.dart';
 import 'package:http_practice/presentation/screens/detail_screen/widget/add_cart_button.dart';
 import 'package:http_practice/presentation/screens/detail_screen/widget/count_widget.dart';
 import 'package:http_practice/presentation/screens/detail_screen/widget/description_widget.dart';
