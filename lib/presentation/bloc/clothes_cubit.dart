@@ -32,7 +32,7 @@ class ClothesCubit extends Cubit<ClothesState> {
     }
   }
 
-  void sortAllProduct(Category category) async {
+  void categorySortProduct(Category category) async {
     try {
       emit(ClothesLoading());
       var connectivityResult = await (Connectivity().checkConnectivity());
@@ -45,6 +45,32 @@ class ClothesCubit extends Cubit<ClothesState> {
         } else {
           final products = await apiRequest.getAllProduct();
           final key = products.where((element) => element.category == category);
+          emit(ClothesLoaded(key));
+        }
+      } else if (connectivityResult == ConnectivityResult.none) {
+        emit(ClothesNoInternet());
+      }
+    } catch (e, s) {
+      print(e);
+      print(s);
+      emit(ClothesError());
+    }
+  }
+
+
+  void filterSortProduct(Filter filter) async {
+    try {
+      emit(ClothesLoading());
+      var connectivityResult = await (Connectivity().checkConnectivity());
+      print(connectivityResult);
+      if (connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi) {
+        if (filter == Category.ALL) {
+          final products = await apiRequest.getAllProduct();
+          emit(ClothesLoaded(products));
+        } else {
+          final products = await apiRequest.getAllProduct();
+          final key = products.where((element) => element.filter == filter);
           emit(ClothesLoaded(key));
         }
       } else if (connectivityResult == ConnectivityResult.none) {

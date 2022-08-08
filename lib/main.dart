@@ -54,7 +54,7 @@ class ShopApp extends StatelessWidget {
           routes: {
             '/': (context) => const HomeScreen(),
             '/login': (context) => const LoginScreen(),
-            '/cart_screen': (context) => CartScreen(),
+            '/cart_screen': (context) => const CartScreen(),
             '/register_screen': (context) => const RegisterScreen()
           },
         ),

@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/presentation/bloc/clothes_cubit.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/product.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/cart_grid_widget.dart';
+import 'package:http_practice/presentation/screens/home_screen/widget/category_sort_button.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/drawer_widget.dart';
+import 'package:http_practice/presentation/screens/home_screen/widget/filter_sort_button.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/shimmer_loading_widget.dart';
 import 'package:http_practice/presentation/screens/home_screen/widget/shopping_cart_icon_widget.dart';
 
@@ -17,25 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String dropDownValue = 'Сортировать';
 
-  var key = Category.MEN_S_CLOTHING;
-
-  final Map<String, dynamic> categoryItems = {
-    'Сортировать': Category.ALL,
-    'Мужская одежда': Category.MEN_S_CLOTHING,
-    'Ювелирная': Category.JEWELERY,
-    'Электроника': Category.ELECTRONICS,
-    'Женская одежда': Category.WOMEN_S_CLOTHING,
-  };
-
-  final items = <String>{
-    'Сортировать',
-    'Мужская одежда',
-    'Ювелирная',
-    'Электроника',
-    'Женская одежда',
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -62,58 +46,32 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 0),
                       child: Container(
                         width: 150,
                         height: 40,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(12)),
-                        child: Center(
-                          child: DropdownButton<String>(
-                            dropdownColor: Colors.white,
-                            elevation: 5,
-                            underline: const SizedBox(),
-                            style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500),
-                            iconEnabledColor: Colors.black,
-                            alignment: Alignment.center,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(12)),
-                            icon: Transform.translate(
-                              offset: const Offset(-2, 0),
-                              child: const Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                size: 26,
-                              ),
-                            ),
-                            value: dropDownValue,
-                            items: items.map((String e) {
-                              return DropdownMenuItem<String>(
-                                child: Text(
-                                  e,
-                                  textAlign: TextAlign.left,
-                                ),
-                                alignment: Alignment.centerLeft,
-                                value: e,
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              BlocProvider.of<ClothesCubit>(context)
-                                  .sortAllProduct(categoryItems[newValue]!);
-                              setState(() {
-                                dropDownValue = newValue!;
-                              });
-                            },
-                          ),
+                        child: const Center(
+                          child: CategorySortButton()
                         ),
                       ),
-                    )
+                    ),
+
+                    Container(
+                        width: 160,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Center(child: FilterSortButton())
+                    ),
+
+
                   ],
                 ),
                 Padding(

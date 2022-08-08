@@ -19,6 +19,7 @@ class Product {
     this.image,
     this.rating,
     this.category,
+    this.filter,
   });
 
   final int? id;
@@ -28,6 +29,7 @@ class Product {
   final String? image;
   final Rating? rating;
   final Category? category;
+  final Filter? filter;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
@@ -37,6 +39,8 @@ class Product {
         image: json["image"],
         rating: Rating.fromJson(json["rating"]),
         category: categoryValues.map![json["category"]],
+        filter: filterValues.map![json['filter']]
+
       );
 
   Map<String, dynamic> toJson() => {
@@ -71,6 +75,13 @@ class Rating {
 }
 
 enum Category { MEN_S_CLOTHING, JEWELERY, ELECTRONICS, WOMEN_S_CLOTHING, ALL }
+enum Filter { HIGH_PRICE,LOW_PRICE,RATING,ALL}
+
+final filterValues = EnumValues({
+  "high": Filter.HIGH_PRICE,
+  "low": Filter.LOW_PRICE,
+  "rate": Filter.RATING,
+});
 
 final categoryValues = EnumValues({
   "electronics": Category.ELECTRONICS,
