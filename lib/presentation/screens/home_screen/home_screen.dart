@@ -46,10 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 0),
+                      padding: const EdgeInsets.only(left: 20),
                       child: Container(
                         width: 150,
                         height: 40,
@@ -61,17 +61,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-
-                    Container(
-                        width: 160,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Center(child: FilterSortButton())
-                    ),
-
-
+                    //
+                    // Container(
+                    //     width: 160,
+                    //     height: 40,
+                    //     decoration: BoxDecoration(
+                    //         border: Border.all(color: Colors.black),
+                    //         borderRadius: BorderRadius.circular(12)),
+                    //     child: Center(child: FilterSortButton())
+                    // ),
                   ],
                 ),
                 Padding(
