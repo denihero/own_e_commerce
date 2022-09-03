@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_practice/core/constant/auth.dart';
 import 'package:http_practice/presentation/screens/login/widget/email_textformfield.dart';
@@ -87,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             title: 'Login',
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
+                                FocusScope.of(context).unfocus();
                                 context.read<AuthBloc>().add(AuthLogin(
                                     emailController: emailController,
                                     passwordController: passwordController,

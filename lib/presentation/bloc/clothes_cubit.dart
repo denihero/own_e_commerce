@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http_practice/presentation/screens/home_screen/model/api_request/api_request.dart';
@@ -9,15 +11,23 @@ part 'clothes_state.dart';
 class ClothesCubit extends Cubit<ClothesState> {
   ClothesCubit({required this.apiRequest}) : super(ClothesInitial()) {
     getAddProduct();
+    ///TODO В будущем будет проверять на то чтобы изменял состояние если что то изменяется
+    connectivitySubscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+
+    });
+
   }
 
+
   final ApiRequest apiRequest;
+  ConnectivityResult? connectivityResult;
+  Connectivity? connectivity;
+  StreamSubscription? connectivitySubscription;
 
   void getAddProduct() async {
     try {
       emit(ClothesLoading());
-      var connectivityResult = await (Connectivity().checkConnectivity());
-      print(connectivityResult);
+       connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.mobile ||
           connectivityResult == ConnectivityResult.wifi) {
         final products = await apiRequest.getAllProduct();
@@ -35,8 +45,7 @@ class ClothesCubit extends Cubit<ClothesState> {
   void categorySortProduct(Category category) async {
     try {
       emit(ClothesLoading());
-      var connectivityResult = await (Connectivity().checkConnectivity());
-      print(connectivityResult);
+      connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.mobile ||
           connectivityResult == ConnectivityResult.wifi) {
         if (category == Category.ALL) {
@@ -61,8 +70,7 @@ class ClothesCubit extends Cubit<ClothesState> {
   void filterSortProduct(Filter filter) async {
     try {
       emit(ClothesLoading());
-      var connectivityResult = await (Connectivity().checkConnectivity());
-      print(connectivityResult);
+      connectivityResult = await (Connectivity().checkConnectivity());
       if (connectivityResult == ConnectivityResult.mobile ||
           connectivityResult == ConnectivityResult.wifi) {
         if (filter == Category.ALL) {
