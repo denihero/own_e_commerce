@@ -1,22 +1,44 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 
 import '../product.dart';
 
 class ApiRequest {
-  Future<List<Product>> getAllProduct() async {
-    final response =
-        await http.get(Uri.parse('https://fakestoreapi.com/products'));
 
+  var dio = Dio(
+    BaseOptions(
+      baseUrl: 'https://fakestoreapi.com/products',
+      connectTimeout: 5000,
+      receiveTimeout: 3000,
+    ),
+  );
+
+  Future<List<Product>> getAllProduct() async {
     List<Product> product = [];
-    if (response.statusCode == 200) {
-      for (var item in jsonDecode(response.body)) {
-        product.add(Product.fromJson(item));
+    try {
+      final Response response =
+      await dio.get(BaseOptions().baseUrl);
+      if (response.statusCode == 200) {
+        for (var item in response.data) {
+          product.add(Product.fromJson(item));
+        }
+      } else {
+        throw Exception('Error');
       }
-      return product;
-    } else {
-      throw Exception('Error');
+    } on DioError catch(e) {
+      if(e.response != null){
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      }else{
+        print('Error sending request!');
+        print(e.message);
+      }
     }
+
+    return product;
   }
 }

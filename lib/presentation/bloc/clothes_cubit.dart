@@ -66,28 +66,4 @@ class ClothesCubit extends Cubit<ClothesState> {
     }
   }
 
-
-  void filterSortProduct(Filter filter) async {
-    try {
-      emit(ClothesLoading());
-      connectivityResult = await (Connectivity().checkConnectivity());
-      if (connectivityResult == ConnectivityResult.mobile ||
-          connectivityResult == ConnectivityResult.wifi) {
-        if (filter == Category.ALL) {
-          final products = await apiRequest.getAllProduct();
-          emit(ClothesLoaded(products));
-        } else {
-          final products = await apiRequest.getAllProduct();
-          final key = products.where((element) => element.filter == filter);
-          emit(ClothesLoaded(key));
-        }
-      } else if (connectivityResult == ConnectivityResult.none) {
-        emit(ClothesNoInternet());
-      }
-    } catch (e, s) {
-      print(e);
-      print(s);
-      emit(ClothesError());
-    }
-  }
 }
