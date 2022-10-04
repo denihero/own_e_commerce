@@ -26,7 +26,7 @@ jobs:
       - name: Store release apk
         uses: actions/upload-artifact@v2
         with:
-          name: release-apk
+          name: app-release
           path: build/app/outputs/apk/release/app-release.apk
           
           
