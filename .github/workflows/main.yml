@@ -23,12 +23,10 @@ jobs:
         run: flutter pub get
       - name: Build apk.
         run: flutter build apk
-      - name: Store release apk
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
-          name: app-release
-          path: artifact/app-release.apk
-          
+          name: release-apk
+          path: build/app/outputs/apk/release/app-release.apk
           
 
  
