@@ -22,7 +22,7 @@ jobs:
       - name: Get deps
         run: flutter pub get
       - name: Build apk.
-        run: flutter build apk
+        run: flutter build apk --split-per-abi
 
       - name: Store release apk
         uses: actions/upload-artifact@v2
