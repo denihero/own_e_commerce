@@ -18,7 +18,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          channel: 'beta'
+          channel: 'stable'
       - name: Get deps
         run: flutter pub get
       - name: Build apk.
