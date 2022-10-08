@@ -1,4 +1,4 @@
-name: build-project-time
+name: deploy-to-page
 
 on:
   push:
