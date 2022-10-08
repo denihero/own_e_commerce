@@ -49,7 +49,7 @@ jobs:
       - name: Compare two file
         uses: LouisBrunner/diff-action@v0.1.3
         with:
-          old: build/app/outputs/flutter-apk/app-release.apk
+          old: build/app/outputs/flutter-apk/release-apk.apk
           new: build/app/outputs/flutter-apk/app-release.apk
           mode: addition
 
