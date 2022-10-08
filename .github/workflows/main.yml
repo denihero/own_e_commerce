@@ -24,8 +24,9 @@ jobs:
         run: flutter pub get
       - name: Donwload artifacts
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v2.23.0
         with:
+          worklfow: main.yml
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
          search_artifacts: true
