@@ -30,28 +30,33 @@ jobs:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
 
-#      - name: Build app bundle
-#        run: flutter build appbundle
-#      - uses: actions/upload-artifact@v2
+      - name: Build app bundle
+        run: flutter build appbundle
+      - uses: actions/upload-artifact@v2
+        with:
+          name: app-bundle
+          path: build/app/outputs/bundle/release/app-release.aab
+
+
+      - name: Write GithubPage
+        run: |
+          hello > README.md
+
+
+#      - name: Download artifacts
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2.23.0
 #        with:
-#          name: app-bundle
-#          path: build/app/outputs/bundle/release/app-release.aab
+#          workflow: main.yml
+#          name: release-apk
+#          search_artifacts: true
 
-
-      - name: Download artifacts
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2.23.0
-        with:
-          workflow: main.yml
-          name: release-apk
-          search_artifacts: true
-
-      - name: Compare two file
-        uses: LouisBrunner/diff-action@v0.1.3
-        with:
-          old: build/app/outputs/flutter-apk/release-apk.apk
-          new: build/app/outputs/flutter-apk/app-release.apk
-          mode: addition
+#      - name: Compare two file
+#        uses: LouisBrunner/diff-action@v0.1.3
+#        with:
+#          old: build/app/outputs/flutter-apk/release-apk.apk
+#          new: build/app/outputs/flutter-apk/app-release.apk
+#          mode: addition
 
 
  
