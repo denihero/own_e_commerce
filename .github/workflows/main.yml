@@ -22,20 +22,13 @@ jobs:
           channel: 'stable'
       - name: Get deps
         run: flutter pub get
-      - name: Donwload artifacts
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2.23.0
-        with:
-          worklfow: main.yml
+
+      - name: Build apk.
+        run: flutter build apk
+      - uses: actions/upload-artifact@v2
+       with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-         search_artifacts: true
-#      - name: Build apk.
-#        run: flutter build apk
-#      - uses: actions/upload-artifact@v2
-#        with:
-#          name: release-apk
-#          path: build/app/outputs/flutter-apk/app-release.apk
+         path: build/app/outputs/flutter-apk/app-release.apk
 
 #      - name: Build app bundle
 #        run: flutter build appbundle
@@ -43,6 +36,16 @@ jobs:
 #        with:
 #          name: app-bundle
 #          path: build/app/outputs/bundle/release/app-release.aab
+
+
+      - name: Donwload artifacts
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2.23.0
+        with:
+          worklfow: main.yml
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          search_artifacts: true
 
 
  
