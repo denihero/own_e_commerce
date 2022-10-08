@@ -40,7 +40,7 @@ jobs:
 
       - name: Write GithubPage
         run: |
-          'hello' > README.md
+          echo 'hello' > README.md
 
 
 #      - name: Download artifacts
