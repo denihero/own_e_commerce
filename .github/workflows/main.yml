@@ -38,13 +38,13 @@ jobs:
 #          path: build/app/outputs/bundle/release/app-release.aab
 
 
-      - name: Donwload artifacts
+      - name: Download artifacts
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2.23.0
         with:
           workflow: main.yml
-          name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: releasess-apk
+          path: build/app/outputs/flutter-apk/app-releasess.apk
           search_artifacts: true
 
       - name: Compare two file
