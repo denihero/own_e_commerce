@@ -27,8 +27,8 @@ jobs:
         run: flutter build apk
       - uses: actions/upload-artifact@v2
         with:
-          name: releases-apk
-          path: build/app/outputs/flutter-apk/app-releases.apk
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
 
 #      - name: Build app bundle
 #        run: flutter build appbundle
@@ -43,8 +43,8 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.23.0
         with:
           workflow: main.yml
-          name: releasess-apk
-          path: build/app/outputs/flutter-apk/app-releasess.apk
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
           search_artifacts: true
 
       - name: Compare two file
