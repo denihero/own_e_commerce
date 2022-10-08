@@ -44,7 +44,6 @@ jobs:
         with:
           workflow: main.yml
           name: release-apk
-#          path: build/app/outputs/flutter-apk/app-release.apk
           search_artifacts: true
 
       - name: Compare two file
@@ -52,6 +51,7 @@ jobs:
         with:
           old: build/app/outputs/flutter-apk/app-releases.apk
           new: build/app/outputs/flutter-apk/app-release.apk
+          mode: addition
 
 
  
