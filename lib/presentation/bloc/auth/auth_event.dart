@@ -1,30 +1,12 @@
 part of 'auth_bloc.dart';
 
-abstract class AuthEvent extends Equatable {
-  @override
-  List<Object?> get props => [];
+@freezed
+class AuthEvent with _$AuthEvent {
+  factory AuthEvent.login(
+      {required String email,
+      required String password,
+      required BuildContext context}) = AuthLoginEvent;
+  factory AuthEvent.signIn({required String name,required String email,required String password,required BuildContext context}) = AuthSignInEvent;
 }
 
-class AuthLogin extends AuthEvent {
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final BuildContext context;
 
-  AuthLogin(
-      {required this.emailController,
-      required this.passwordController,
-      required this.context});
-}
-
-class AuthRegistered extends AuthEvent {
-  final String name;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final BuildContext context;
-
-  AuthRegistered(
-      {required this.name,
-      required this.emailController,
-      required this.passwordController,
-      required this.context});
-}

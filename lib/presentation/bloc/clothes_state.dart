@@ -1,23 +1,11 @@
 part of 'clothes_cubit.dart';
 
-@immutable
-abstract class ClothesState extends Equatable {
-  @override
-  List<Object?> get props => [];
+@freezed
+class ClothesState with _$ClothesState {
+  factory ClothesState.initial() = _ClothesInitialState;
+  factory ClothesState.loading() = _ClothesLoadingState;
+  factory ClothesState.loaded({required Iterable<Product> product}) =
+      _ClothesLoadedState;
+  factory ClothesState.noInternet() = _ClothesNoInternet;
+  factory ClothesState.error() = _ClothesError;
 }
-
-class ClothesInitial extends ClothesState {}
-
-class ClothesLoading extends ClothesState {}
-
-class ClothesLoaded extends ClothesState {
-  ClothesLoaded(this.product);
-
-  final Iterable<Product> product;
-  @override
-  List<Object?> get props => [product];
-}
-
-class ClothesError extends ClothesState {}
-
-class ClothesNoInternet extends ClothesState {}

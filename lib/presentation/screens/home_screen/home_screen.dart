@@ -19,10 +19,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   @override
   Widget build(BuildContext context) {
+    final state = context.read<ClothesCubit>().state;
+    final double itemHeight = MediaQuery.of(context).size.height / 4.7;
+    final double itemWidth = MediaQuery.of(context).size.width / 3.3;
     return SafeArea(
       child: Scaffold(
           backgroundColor: const Color.fromRGBO(251, 250, 245, 1),
@@ -56,73 +57,44 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(12)),
-                        child: const Center(
-                          child: CategorySortButton()
-                        ),
+                        child: const Center(child: CategorySortButton()),
                       ),
                     ),
-                    //
-                    // Container(
-                    //     width: 160,
-                    //     height: 40,
-                    //     decoration: BoxDecoration(
-                    //         border: Border.all(color: Colors.black),
-                    //         borderRadius: BorderRadius.circular(12)),
-                    //     child: Center(child: FilterSortButton())
-                    // ),
                   ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
-                  child: Center(child: BlocBuilder<ClothesCubit, ClothesState>(
-                    builder: (context, state) {
-                      if (state is ClothesLoading) {
-                        final double itemHeight =
-                            MediaQuery.of(context).size.height / 4.7;
-                        final double itemWidth =
-                            MediaQuery.of(context).size.width / 3.3;
-                        return GridView.builder(
-                            addAutomaticKeepAlives: true,
-                            shrinkWrap: true,
-                            //physics: const BouncingScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    childAspectRatio: (itemWidth / itemHeight),
-                                    crossAxisCount: 2,
-                                    mainAxisSpacing: 4,
-                                    crossAxisSpacing: 4),
-                            itemCount: 6,
-                            itemBuilder: (context, index) {
-                              return const ShimmerLoadingWidget();
-                            });
-                      } else if (state is ClothesError) {
-                        return const Text('Something get wrong');
-                      } else if (state is ClothesNoInternet) {
-                        return const Center(
-                          child: Text(
-                            'No internet connection',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        );
-                      } else if (state is ClothesLoaded) {
-                        final product = state.product;
-                        return GridCart(
-                          product: product.map((e) => e).toList(),
-                        );
-                      }
-                      return const SizedBox();
-                    },
-                  )),
+                  child: Center(
+                    child: state.when(
+                      initial: () => const SizedBox(),
+                      loading: () => GridView.builder(
+                          addAutomaticKeepAlives: true,
+                          shrinkWrap: true,
+                          //physics: const BouncingScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  childAspectRatio: (itemWidth / itemHeight),
+                                  crossAxisCount: 2,
+                                  mainAxisSpacing: 4,
+                                  crossAxisSpacing: 4),
+                          itemCount: 6,
+                          itemBuilder: (context, index) {
+                            return const ShimmerLoadingWidget();
+                          }),
+                      loaded: (product) => GridCart(
+                        product: product.map((e) => e).toList(),
+                      ),
+                      noInternet: () => const Text('There\'s no internet'),
+                      error: () => const Text(
+                        'No internet connection',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
           )),
     );
-  }
-
-  sortProduct(String value) {
-    switch (value) {
-      case 'Men\'s clothing':
-    }
   }
 }

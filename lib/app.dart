@@ -22,7 +22,7 @@ class ShopApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<ClothesCubit>(
-            create: (context) => ClothesCubit(apiRequest: ApiRequest()),
+            create: (context) => ClothesCubit(apiRequest: ApiRequest())..getAddProduct(),
           ),
           BlocProvider<AuthBloc>(
             create: (context) => AuthBloc(),

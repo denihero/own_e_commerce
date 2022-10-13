@@ -8,12 +8,12 @@ class AuthSystem {
   static String errorMessage = '';
   static User? user;
 
-  static Future<void> login(TextEditingController emailController,
-      TextEditingController passwordController, BuildContext context) async {
+  static Future<void> login(String emailController,
+      String passwordController, BuildContext context) async {
     try {
       final User? user = (await auth.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailController,
+        password: passwordController,
       ))
           .user;
       Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -41,20 +41,20 @@ class AuthSystem {
       }
       Fluttertoast.showToast(msg: errorMessage);
     }
-    emailController.text = '';
-    passwordController.text = '';
+    emailController = '';
+    passwordController = '';
   }
 
   static Future<void> register(
       {required String name,
-      required TextEditingController emailController,
-      required TextEditingController passwordController,
+      required String emailController,
+      required String passwordController,
       required BuildContext context}) async {
     try {
       final UserCredential userCredential =
           (await auth.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: emailController,
+        password: passwordController,
       ));
       user = userCredential.user;
       await user!.updateDisplayName(name);
@@ -90,8 +90,8 @@ class AuthSystem {
       Fluttertoast.showToast(msg: errorMessage);
     }
 
-    emailController.text = '';
-    passwordController.text = '';
+    emailController = '';
+    passwordController = '';
     name = '';
   }
 
