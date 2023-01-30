@@ -38,15 +38,14 @@ class CartWidget extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: SizedBox(
-                    width: 150,
-                    height: 200,
-                    child: CachedNetworkImage(
-                      imageUrl: product.image!,
-                      placeholder: (context, url) =>
-                          const SpinKitDoubleBounce(color: Colors.blue),
-                      fit: BoxFit.contain,
-                    )),
+                child: CachedNetworkImage(
+                  imageUrl: product.image!,
+                  width:180,
+                  height: 190,
+                  placeholder: (context, url) =>
+                      const SpinKitDoubleBounce(color: Colors.blue),
+                  fit: BoxFit.contain,
+                ),
               ),
               const Spacer(),
               Padding(

@@ -42,12 +42,9 @@ class _CategorySortButtonState extends State<CategorySortButton> {
       iconEnabledColor: Colors.black,
       alignment: Alignment.center,
       borderRadius: const BorderRadius.all(Radius.circular(12)),
-      icon: Transform.translate(
-        offset: const Offset(-2, 0),
-        child: const Icon(
-          Icons.keyboard_arrow_down_rounded,
-          size: 26,
-        ),
+      icon: const Icon(
+        Icons.keyboard_arrow_down_rounded,
+        size: 20,
       ),
       value: dropDownValue,
       items: items.map((String e) {

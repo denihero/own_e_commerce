@@ -9,9 +9,7 @@ class ApiRequest {
 
   var dio = Dio(
     BaseOptions(
-      baseUrl: 'https://fakestoreapi.com/products',
-      connectTimeout: 5000,
-      receiveTimeout: 3000,
+      baseUrl: 'https://fakestoreapi.com/products/',
     ),
   );
 
