@@ -11,18 +11,18 @@
     </item>
     <!-- The best chosen release -->
     <item>
-        <title>Version 3.0</title>
-        <enclosure url="http://localhost:1337/Sparkle_Test_App.zip" sparkle:version="3.0" sparkle:os="android" />
+        <title>Версия 1.0.54</title>
+        <enclosure url="http://localhost:1337/Sparkle_Test_App.zip" sparkle:version="1.0.54" sparkle:os="android" />
         <sparkle:deltas>
             <enclosure url="http://localhost:1337/3.0_from_2.0.patch"
-            sparkle:version="3.0"
+            sparkle:version="1.0.54"
             sparkle:deltaFrom="2.0"
             length="1235"
             type="application/octet-stream"
             sparkle:edSignature="..." />
             
             <enclosure url="http://localhost:1337/3.0_from_1.0.patch"
-            sparkle:version="3.0"
+            sparkle:version="1.0.54"
             sparkle:deltaFrom="1.0"
             length="1485"
             type="application/octet-stream"
